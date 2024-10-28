@@ -1,13 +1,16 @@
-package com.example.myproject.Services;
+package edu.tdtu.iot.iotsystem.Services;
 
-import com.example.myproject.Config.CustomUserDetails;
-import com.example.myproject.Config.JwtService;
-import com.example.myproject.DTO.AuthenticationDTO;
-import com.example.myproject.DTO.LoginDTO;
-import com.example.myproject.DTO.UserDTO;
-import com.example.myproject.Exceptions.DuplicateException;
-import com.example.myproject.Model.User;
-import com.example.myproject.Reporsitory.UserRepository;
+
+import edu.tdtu.iot.iotsystem.DTO.AuthenticationDTO;
+import edu.tdtu.iot.iotsystem.DTO.LoginDTO;
+import edu.tdtu.iot.iotsystem.DTO.UserDTO;
+import edu.tdtu.iot.iotsystem.Entity.User;
+import edu.tdtu.iot.iotsystem.Exceptions.BadRequestException;
+import edu.tdtu.iot.iotsystem.Exceptions.DuplicateException;
+import edu.tdtu.iot.iotsystem.JWT.JwtService;
+import edu.tdtu.iot.iotsystem.Repository.RoleRepository;
+import edu.tdtu.iot.iotsystem.Repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,38 +20,41 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static edu.tdtu.iot.iotsystem.Constant.Constant.USER_ROLE;
+
+@RequiredArgsConstructor
 @Service
 public class AuthenticationServiceImp implements AuthenticationService {
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private JwtService jwtService;
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
     @Override
     public User register(UserDTO userDTO) {
 
-        Optional<User> userOptional = userRepository.findByUsername(userDTO.getUsername());
-        if (userOptional.isPresent()){
-            throw new DuplicateException("Username is exist!");
+        if (userRepository.findByEmail(userDTO.getEmail()).isPresent()){
+            throw new DuplicateException("Email have been used!");
+        }
+        if (userRepository.findByPhone(userDTO.getPhone()).isPresent()){
+            throw new DuplicateException("Phone have been used!");
         }
 
+
         User user = User.builder()
-                .fullname(userDTO.getFullname())
-                .username(userDTO.getUsername())
+                .name(userDTO.getName())
+                .email(userDTO.getEmail())
                 .phone(userDTO.getPhone())
                 .password(passwordEncoder.encode(userDTO.getPassword()))
-                .dob(userDTO.getDob())
-                .status(true)
-                .gender(userDTO.getGender())
-                .role("USER")
+                .role(roleRepository.getRoleByName(USER_ROLE))
                 .build();
         userRepository.save(user);
 
         return user;
     }
+
+
 
     @Override
     public AuthenticationDTO login(LoginDTO loginDTO) {
@@ -61,22 +67,24 @@ public class AuthenticationServiceImp implements AuthenticationService {
                 )
         );
 
-        User user = userRepository.findByUsername(loginDTO.getUsername())
-                .orElseThrow();
+        User user = userRepository.findByEmail(loginDTO.getUsername())
+                .or(()->userRepository.findByPhone(loginDTO.getUsername()))
+                .orElseThrow(() -> new BadRequestException("Username is no exist!"));
 
 //        Tạo token
 
-        var jwt = jwtService.generateToken(new CustomUserDetails(user));
+        var jwt = jwtService.generateToken(user);
         return AuthenticationDTO.builder()
                 .token(jwt)
                 .authentication(authentication)
+                .user(user)
                 .build();
     }
 
-    @Override
-    public boolean existsByUsername(String username) {
-        return !userRepository.existsByUsername(username);
-    }
+//    @Override
+//    public boolean existsByUsername(String username) {
+//        return !userRepository.existsByUsername(username);
+//    }
 }
 
 

@@ -1,6 +1,6 @@
-package com.gaoming.MyJavaWebChat.Services;
+package edu.tdtu.iot.iotsystem.Services;
 
-import com.gaoming.MyJavaWebChat.Repository.UserRepository;
+import edu.tdtu.iot.iotsystem.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

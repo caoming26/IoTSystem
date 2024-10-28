@@ -1,13 +1,14 @@
-package com.example.myproject.Services;
+package edu.tdtu.iot.iotsystem.Services;
 
-import com.example.myproject.DTO.AuthenticationDTO;
-import com.example.myproject.DTO.LoginDTO;
-import com.example.myproject.DTO.UserDTO;
-import com.example.myproject.Model.User;
+
+import edu.tdtu.iot.iotsystem.DTO.AuthenticationDTO;
+import edu.tdtu.iot.iotsystem.DTO.LoginDTO;
+import edu.tdtu.iot.iotsystem.DTO.UserDTO;
+import edu.tdtu.iot.iotsystem.Entity.User;
 
 public interface AuthenticationService {
     User register(UserDTO userDTO);
     AuthenticationDTO login(LoginDTO loginDTO);
-    boolean existsByUsername(String username);
+//    boolean existsByUsername(String username);
 
 }

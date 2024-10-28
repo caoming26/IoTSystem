@@ -1,5 +1,6 @@
-package com.example.myproject.DTO;
+package edu.tdtu.iot.iotsystem.DTO;
 
+import edu.tdtu.iot.iotsystem.Entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,4 +14,5 @@ import org.springframework.security.core.Authentication;
 public class AuthenticationDTO {
     String token;
     Authentication authentication;
+    User user;
 }

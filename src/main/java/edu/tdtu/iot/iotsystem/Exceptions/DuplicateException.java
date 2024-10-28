@@ -1,4 +1,4 @@
-package com.example.myproject.Exceptions;
+package edu.tdtu.iot.iotsystem.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

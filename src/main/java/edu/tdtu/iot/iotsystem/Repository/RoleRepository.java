@@ -1,7 +1,8 @@
-package com.gaoming.MyJavaWebChat.Repository;
+package edu.tdtu.iot.iotsystem.Repository;
 
-import com.gaoming.MyJavaWebChat.Models.Role;
+import edu.tdtu.iot.iotsystem.Entity.Role;
 import org.springframework.data.mongodb.repository.MongoRepository;
+
 
 public interface RoleRepository extends MongoRepository<Role, String> {
     Role getRoleByName(String name);

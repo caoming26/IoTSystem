@@ -1,29 +1,28 @@
-package com.example.myproject.Config;
+package edu.tdtu.iot.iotsystem.Config;
 
+import edu.tdtu.iot.iotsystem.Entity.User;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.lang.NonNull;
-import org.springframework.lang.NonNullApi;
-import org.springframework.lang.Nullable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
-public class InterceptorConfiguration implements HandlerInterceptor {
+public class InterceptorConfig implements HandlerInterceptor {
     @Override
     public void postHandle(@NonNull HttpServletRequest request,@NonNull HttpServletResponse response,@NonNull Object handler, ModelAndView modelAndView) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (modelAndView != null){
             if (!authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ANONYMOUS"))) {
-                CustomUserDetails principal = (CustomUserDetails) authentication.getPrincipal();
-                modelAndView.addObject("fullname", principal.getUser().getFullname());
-                modelAndView.addObject("username", principal.getUser().getUsername());
-                modelAndView.addObject("phone", principal.getUser().getPhone());
-                modelAndView.addObject("dob", principal.getUser().getDob());
-                modelAndView.addObject("gender", principal.getUser().getGender());
+                User principal = (User) authentication.getPrincipal();
+                modelAndView.addObject("name", principal.getName());
+                modelAndView.addObject("username", principal.getUsername());
+                modelAndView.addObject("phone", principal.getPhone());
+                modelAndView.addObject("email", principal.getEmail());
+                
                 modelAndView.addObject("isLogined", true);
             } else {
                 modelAndView.addObject("isLogined", false);
