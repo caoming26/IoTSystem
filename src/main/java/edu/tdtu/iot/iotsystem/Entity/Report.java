@@ -11,6 +11,7 @@ import java.util.Date;
 public class Report {
     private String id;
     private Date time;
+    private String type;
     private Double energyConsumption;
     private Double temperature;
     private Double humidity;

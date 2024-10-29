@@ -10,7 +10,7 @@ import java.util.Date;
 @Builder
 @Document("visit_history")
 public class VisitHistory {
-    private Integer id;
+    private String id;
     private RFID rfid;
     private User user;
     private Date visitAt;
