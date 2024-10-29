@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* This css file is to over write bootstrap css
 --------------------------------------------------------- /
 * Theme Name: Sufee-Admin Admin Template
@@ -11,7 +12,6 @@
 * Tags: html, themplate, Sufee-Admin
 --------------------------------------------------------- */
 /* Bootstrap */
-@charset "UTF-8";
 
 /*!
  * animate.css -http://daneden.me/animate
@@ -82,8 +82,9 @@
     background-color: #fff;
     border: 1px solid #e9ecef;
     border-radius: 2px;
-    -webkit-transition:opacity background 0.15s ease-out;
-    transition: opacity background 0.15s ease-out; }
+    -webkit-transition: opacity 0.15s ease-out, background 0.15s ease-out;
+    transition: opacity 0.15s ease-out, background 0.15s ease-out;
+  }
   .switch.switch-default .switch-input:checked ~ .switch-label:before {
     opacity: 0;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
@@ -158,8 +159,9 @@
     background-color: #fff;
     border: 1px solid #e9ecef;
     border-radius: 2px;
-    -webkit-transition:opacity background 0.15s ease-out;
-    transition: opacity background 0.15s ease-out; }
+    -webkit-transition: opacity 0.15s ease-out, background 0.15s ease-out;
+    transition: opacity 0.15s ease-out, background 0.15s ease-out;
+  }
   .switch.switch-text .switch-label:after,
   .switch.switch-text .switch-label:before {
     position: absolute;
@@ -248,15 +250,16 @@
     position: relative;
     display: block;
     height: inherit;
-    font-family: FontAwesome;
+    font-family: FontAwesome, sans-serif;
     font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
     background-color: #fff;
     border: 1px solid #e9ecef;
     border-radius: 2px;
-    -webkit-transition:opacity background 0.15s ease-out;
-    transition: opacity background 0.15s ease-out; }
+    -webkit-transition: opacity 0.15s ease-out, background 0.15s ease-out;
+    transition: opacity 0.15s ease-out, background 0.15s ease-out;
+  }
   .switch.switch-icon .switch-label:after,
   .switch.switch-icon .switch-label:before {
     position: absolute;
@@ -351,8 +354,9 @@
     background-color: #f8f9fa;
     border: 1px solid #e9ecef;
     border-radius: 2px;
-    -webkit-transition:opacity background 0.15s ease-out;
-    transition: opacity background 0.15s ease-out; }
+    -webkit-transition: opacity 0.15s ease-out, background 0.15s ease-out;
+    transition: opacity 0.15s ease-out, background 0.15s ease-out;
+  }
   .switch.switch-3d .switch-input:checked ~ .switch-label:before {
     opacity: 0;
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
@@ -931,7 +935,7 @@
 body {
   background: #f1f2f7;
   display: table;
-  font-family: 'Open Sans' sans-serif !important;
+  font-family: 'Open Sans', sans-serif !important;
   font-size: 16px;
   width: 100%; }
 
@@ -940,7 +944,7 @@ div[class*="col-"] {
 
 p {
   font-size: 16px;
-  font-family: 'Open Sans' sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   line-height: 24px;
   color: #878787; }
@@ -1569,7 +1573,7 @@ header .form-inline {
     width: 50px;
     padding:12px 0;
     padding: 0.75rem 0;
-    margin: 0 !important !important;
+    margin: 0 !important;
     color: #fff;
     outline: 0;
     text-align: center;
@@ -1777,7 +1781,7 @@ header .form-inline {
   font-weight: 300; }
 
 .fontawesome-icon-list i {
-  font-style: 16px;
+  font-size: 16px;
   padding-right: 10px; }
 
 .social-box i {

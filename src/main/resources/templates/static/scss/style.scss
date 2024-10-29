@@ -15,7 +15,7 @@
 @import "switches";
 @import "widgets";
 @import "socials";
-@import "../../vendors/animate.css/animate.min.css";
+@import "/templates/static/vendors/animate.css/animate.min.css";
 
 .bg-flat-color-1 {
     background: #20a8d8;
@@ -48,7 +48,7 @@
 body {
     background: $container-bg;
     display: table;
-    font-family: 'Open Sans' sans-serif !important;
+    font-family: 'Open Sans', sans-serif !important;
     font-size: 16px;
     width: 100%;
 }
@@ -59,7 +59,7 @@ div[class*="col-"] {
 
 p {
     font-size: 16px;
-    font-family: 'Open Sans' sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     line-height: 24px;
     color: #878787;
@@ -160,7 +160,7 @@ aside.left-panel {
     .navbar-brand {
         border-bottom: 1px solid #4e4e52;
         color: #f1f2f7 !important;
-        font-family: 'Open Sans';
+        font-family: 'Open Sans', sans-serif;
         font-size: 22px;
         float: none;
         line-height: 50px;
@@ -193,7 +193,7 @@ aside.left-panel {
         color: #9496a1;
         clear: both;
         display: block;
-        font-family: 'Open Sans';
+        font-family: 'Open Sans', sans-serif;
         font-size: 14px;
         font-weight: 700;
         line-height: 50px;
@@ -250,7 +250,7 @@ aside.left-panel {
 
                 .badge {
                     border-radius: 0;
-                    font-family: 'Open Sans';
+                    font-family: 'Open Sans', sans-serif;
                     font-weight: 600;
                     float: right;
                     margin: 6px 0 0;
@@ -267,7 +267,7 @@ aside.left-panel {
                     &:before {
                         content: "\f105";
                         color: #c8c9ce;
-                        font-family: 'Fontawesome';
+                        font-family: 'Fontawesome', sans-serif;
                         font-size: 16px;
                         position: absolute;
                         top: 10px;
@@ -348,7 +348,7 @@ aside.left-panel {
     background: #a9d86e;
     border-radius: 50%;
     color: #fff;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     font-size: 9px;
     font-weight: 700;
     float: right;
@@ -787,7 +787,7 @@ header .form-inline {
     .user-menu {
         background: $header-bg;
         border: none;
-        font-family: 'Open Sans';
+        font-family: 'Open Sans', sans-serif;
         left: inherit !important;
         right: 0;
         top: 55px !important;
@@ -825,7 +825,7 @@ header .form-inline {
         background: #d9534f;
         border-radius: 50%;
         color: #fff;
-        font-family: 'Open Sans';
+        font-family: 'Open Sans', sans-serif;
         font-size: 9px;
         font-weight: 700;
         float: right;
@@ -923,7 +923,7 @@ header .form-inline {
                 float: left;
                 width: 50px;
                 padding: 0.75rem 0;
-                margin: 0!important !important;
+                margin: 0!important ;
                 color: #fff;
                 outline: 0;
                 text-align: center;
@@ -1194,7 +1194,7 @@ header .form-inline {
     }
 
     i {
-        font-style: 16px;
+        font-size: 16px;
         padding-right: 10px;
     }
 }
