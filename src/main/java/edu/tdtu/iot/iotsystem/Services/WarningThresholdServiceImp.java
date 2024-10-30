@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static edu.tdtu.iot.iotsystem.Constant.Constant.getTypes;
+
 @Service
 @RequiredArgsConstructor
 public class WarningThresholdServiceImp implements WarningThresholdService{
@@ -36,11 +38,14 @@ public class WarningThresholdServiceImp implements WarningThresholdService{
 
     @Override
     public List<WarningThresholdDTO> addWarningThreshold(WarningThresholdDTO warningThresholdDTO){
+        if (!getTypes().contains(warningThresholdDTO.getType())){
+            throw new BadRequestException("Type is not exist! Check your type!");
+        }
         List<WarningThreshold> warningThresholds = warningThresholdRepository.findAll();
         if (!warningThresholds.isEmpty()){
             for (WarningThreshold threshold: warningThresholds) {
                 if (threshold.getType().equals(warningThresholdDTO.getType())){
-                    throw new DuplicateException("Type is exits!");
+                    throw new DuplicateException("Threshold for this type is exits!");
                 }
             }
         }
