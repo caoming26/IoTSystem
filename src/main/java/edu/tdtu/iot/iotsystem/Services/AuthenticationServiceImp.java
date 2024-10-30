@@ -10,11 +10,15 @@ import edu.tdtu.iot.iotsystem.Exceptions.DuplicateException;
 import edu.tdtu.iot.iotsystem.JWT.JwtService;
 import edu.tdtu.iot.iotsystem.Repository.RoleRepository;
 import edu.tdtu.iot.iotsystem.Repository.UserRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +35,8 @@ public class AuthenticationServiceImp implements AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+
+    private final UserDetailsService userServices;
     @Override
     public User register(UserDTO userDTO) {
 
@@ -79,6 +85,40 @@ public class AuthenticationServiceImp implements AuthenticationService {
                 .authentication(authentication)
                 .user(user)
                 .build();
+    }
+
+    @Override
+    public User getUserLoggedIn(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof UserDetails userDetails) {
+            String username = userDetails.getUsername();
+            System.out.println("Toi dang bi loi"+username+"   "+userServices.loadUserByUsername(username).getUsername());
+
+            return (User) userServices.loadUserByUsername(username);
+        }
+        System.out.println("hu hu hu");
+        return null;
+    }
+
+    @Override
+    public User checkLogin(HttpServletRequest request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication);
+
+        // Chek if user is authenticated (not be anonymous)
+        if (authentication != null && authentication.isAuthenticated()
+                && !"anonymousUser".equals(authentication.getPrincipal())) {
+
+            return getUserLoggedIn();
+            // Is login
+
+        } else {
+            System.out.println("false");
+            // Isn't login
+            return null;
+        }
+
     }
 
 //    @Override
