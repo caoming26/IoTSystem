@@ -9,6 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @Document("rfid")
 public class RFID {
+
+    @Id
     private String id;
+    private String rfid;
     private String name;
 }
