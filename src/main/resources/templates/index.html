@@ -1,476 +1,661 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--<![endif]-->
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/all.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&amp;display=swap"
+      rel="stylesheet"
+    />
     <title>Dashboard</title>
-    <meta name="description" content="Dashboard">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="loader">
+      <h1>Loading<span>....</span></h1>
+    </div>
+    <div class="page-content index-page">
+      <div class="sidebar">
+        <div class="brand">
+          <i class="fa-solid fa-xmark xmark"></i>
+          <h3 class="brand-name">Zana</h3>
+        </div>
+        <ul>
+          <li>
+            <a th:href="@{/index.html}" class="sidebar-link">
+              <i class="fa-regular fa-chart-bar fa-fw"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
 
-    <link rel="apple-touch-icon" th:href="@{/apple-touch-icon.png}">
-    <link rel="shortcut icon" th:href="@{/favicon.ico}">
+          <li>
+            <a th:href="@{/pages/settings.html}" class="sidebar-link">
+              <i class="fa-solid fa-gear fa-fw"></i>
+              <span>Settings</span>
+            </a>
+          </li>
 
-    <link rel="stylesheet" th:href="@{/vendors/bootstrap/dist/css/bootstrap.min.css}">
-    <link rel="stylesheet" th:href="@{/vendors/font-awesome/css/font-awesome.min.css}">
-    <link rel="stylesheet" th:href="@{/vendors/themify-icons/css/themify-icons.css}">
-    <link rel="stylesheet" th:href="@{/vendors/flag-icon-css/css/flag-icon.min.css}">
-    <link rel="stylesheet" th:href="@{/vendors/selectFX/css/cs-skin-elastic.css}">
-    <link rel="stylesheet" th:href="@{/vendors/jqvmap/dist/jqvmap.min.css}">
+          <li>
+            <a th:href="@{/pages/Profile.html}" class="sidebar-link">
+              <i class="fa-regular fa-user fa-fw"></i><span>Profile</span>
+            </a>
+          </li>
 
+          <li>
+            <a th:href="@{/pages/Projects.html}" class="sidebar-link">
+              <i class="fa-solid fa-diagram-project fa-fw"></i
+              ><span>Projects</span>
+            </a>
+          </li>
 
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+          <li>
+            <a th:href="@{/pages/Courses.html}" class="sidebar-link">
+              <i class="fa-solid fa-graduation-cap fa-fw"></i
+              ><span>Courses</span>
+            </a>
+          </li>
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+          <li>
+            <a th:href="@{/pages/Friends.html}" class="sidebar-link">
+              <i class="fa-regular fa-circle-user fa-fw"></i
+              ><span>Friends</span>
+            </a>
+          </li>
 
-</head>
+          <li>
+            <a th:href="@{/pages/Files.html}" class="sidebar-link">
+              <i class="fa-regular fa-file fa-fw"></i> <span>Files</span>
+            </a>
+          </li>
 
-<body>
-    <!-- Left Panel -->
+          <li>
+            <a th:href="@{/pages/Plans.html}" class="sidebar-link">
+              <i class="fa-regular fa-credit-card fa-fw"></i><span>Plans</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <main>
+        <div class="header">
+          <i class="fa-solid fa-bars bar-item"></i>
+          <div class="search">
+            <input type="search" placeholder="Type A Keyword" />
+          </div>
 
-    <div th:replace="left-panel :: #left-panel"></div>
+          <div class="profile">
+            <span class="bell"><i class="fa-regular fa-bell fa-lg"></i></span>
 
-    <!-- Left Panel -->
-
-    <!-- Right Panel -->
-
-    <div id="right-panel" class="right-panel">
-
-        <!-- Header-->
-        <div th:replace="header :: #header"></div>
-        <!-- Header-->
-
-        <!-- Breadcrumbs-->
-        <div th:replace="breadcrumbs :: .breadcrumbs"></div>
-        <!-- Breadcrumbs-->
-
-        <div class="content mt-3">
-
-            <div class="col-sm-12">
-                <div class="alert  alert-success alert-dismissible fade show" role="alert">
-                    <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+            <img th:src="@{/images/avatar.png}" alt="No Image" />
+          </div>
+        </div>
+        <div class="main-content">
+          <div class="title">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="main-content-boxes">
+            <div class="box first-box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Welcome</h2>
+                  <p>Zana</p>
                 </div>
+                <div class="box-image">
+                  <img th:src="@{/images/welcome.png}" alt="No image" />
+                </div>
+                <img th:src="@{/images/avatar.png}" alt="No image" class="avatar" />
+              </div>
+              <div class="box-section2">
+                <ul>
+                  <li>
+                    <span>Zana Suleiman</span>
+                    <p>Developer</p>
+                  </li>
+                  <li>
+                    <span>80</span>
+                    <p>Projects</p>
+                  </li>
+                  <li>
+                    <span>$8500</span>
+                    <p>Earned</p>
+                  </li>
+                </ul>
+              </div>
+              <a th:href="@{/pages/Profile.html}">Profile </a>
             </div>
 
-
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-1">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton1" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span class="count">10468</span>
-                        </h4>
-                        <p class="text-light">Members online</p>
-
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                            <canvas id="widgetChart1"></canvas>
-                        </div>
-
-                    </div>
-
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Quick Draft</h2>
+                  <p>Write A Draft For Your Ideas</p>
                 </div>
+              </div>
+              <form>
+                <input type="text" placeholder="Title" />
+                <textarea placeholder="Your Thoughts"></textarea>
+                <button type="submit">save</button>
+              </form>
             </div>
-            <!--/.col-->
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-2">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton2" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span class="count">10468</span>
-                        </h4>
-                        <p class="text-light">Members online</p>
-
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                            <canvas id="widgetChart2"></canvas>
-                        </div>
-
-                    </div>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Yearly Targets</h2>
+                  <p>Targets Of The Year</p>
                 </div>
-            </div>
-            <!--/.col-->
-
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-3">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton3" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span class="count">10468</span>
-                        </h4>
-                        <p class="text-light">Members online</p>
-
-                    </div>
-
-                    <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                        <canvas id="widgetChart3"></canvas>
-                    </div>
-                </div>
-            </div>
-            <!--/.col-->
-
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-4">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                            <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton4" data-toggle="dropdown">
-                                <i class="fa fa-cog"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                                <div class="dropdown-menu-content">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
-                        </div>
-                        <h4 class="mb-0">
-                            <span class="count">10468</span>
-                        </h4>
-                        <p class="text-light">Members online</p>
-
-                        <div class="chart-wrapper px-3" style="height:70px;" height="70">
-                            <canvas id="widgetChart4"></canvas>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!--/.col-->
-
-            <div class="col-lg-3 col-md-6">
-                <div class="social-box facebook">
-                    <i class="fa fa-facebook"></i>
+              </div>
+              <div class="third-box-section2">
+                <div class="third-box-section2-details">
+                  <div class="icon">
+                    <i class="fa-solid fa-dollar-sign fa-lg"></i>
+                  </div>
+                  <div class="third-box-info">
                     <ul>
-                        <li>
-                            <span class="count">40</span> k
-                            <span>friends</span>
-                        </li>
-                        <li>
-                            <span class="count">450</span>
-                            <span>feeds</span>
-                        </li>
+                      <li>Money</li>
+                      <li>$20.000</li>
+                      <li>
+                        <span><span class="tipTop">80%</span></span>
+                      </li>
                     </ul>
+                  </div>
                 </div>
-                <!--/social-box-->
-            </div>
-            <!--/.col-->
 
-
-            <div class="col-lg-3 col-md-6">
-                <div class="social-box twitter">
-                    <i class="fa fa-twitter"></i>
+                <div class="third-box-section2-details">
+                  <div class="icon">
+                    <i class="fa-solid fa-code fa-lg"></i>
+                  </div>
+                  <div class="third-box-info">
                     <ul>
-                        <li>
-                            <span class="count">30</span> k
-                            <span>friends</span>
-                        </li>
-                        <li>
-                            <span class="count">450</span>
-                            <span>tweets</span>
-                        </li>
+                      <li>Projects</li>
+                      <li>24</li>
+                      <li>
+                        <span><span class="tipTop">55%</span></span>
+                      </li>
                     </ul>
+                  </div>
                 </div>
-                <!--/social-box-->
-            </div>
-            <!--/.col-->
 
-
-            <div class="col-lg-3 col-md-6">
-                <div class="social-box linkedin">
-                    <i class="fa fa-linkedin"></i>
+                <div class="third-box-section2-details">
+                  <div class="icon">
+                    <i class="fa-solid fa-user fa-lg"></i>
+                  </div>
+                  <div class="third-box-info">
                     <ul>
-                        <li>
-                            <span class="count">40</span> +
-                            <span>contacts</span>
-                        </li>
-                        <li>
-                            <span class="count">250</span>
-                            <span>feeds</span>
-                        </li>
+                      <li>Team</li>
+                      <li>12</li>
+                      <li>
+                        <span><span class="tipTop">75%</span></span>
+                      </li>
                     </ul>
+                  </div>
                 </div>
-                <!--/social-box-->
+              </div>
             </div>
-            <!--/.col-->
 
-
-            <div class="col-lg-3 col-md-6">
-                <div class="social-box google-plus">
-                    <i class="fa fa-google-plus"></i>
-                    <ul>
-                        <li>
-                            <span class="count">94</span> k
-                            <span>followers</span>
-                        </li>
-                        <li>
-                            <span class="count">92</span>
-                            <span>circles</span>
-                        </li>
-                    </ul>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Tickets Statistics</h2>
+                  <p>Everything About Support Tickets</p>
                 </div>
-                <!--/social-box-->
-            </div>
-            <!--/.col-->
-
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <h4 class="card-title mb-0">Traffic</h4>
-                                <div class="small text-muted">October 2017</div>
-                            </div>
-                            <!--/.col-->
-                            <div class="col-sm-8 hidden-sm-down">
-                                <button type="button" class="btn btn-primary float-right bg-flat-color-1"><i class="fa fa-cloud-download"></i></button>
-                                <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-                                    <div class="btn-group mr-3" data-toggle="buttons" aria-label="First group">
-                                        <label class="btn btn-outline-secondary">
-                                            <input type="radio" name="options" id="option1"> Day
-                                        </label>
-                                        <label class="btn btn-outline-secondary active">
-                                            <input type="radio" name="options" id="option2" checked=""> Month
-                                        </label>
-                                        <label class="btn btn-outline-secondary">
-                                            <input type="radio" name="options" id="option3"> Year
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.col-->
-
-
-                        </div>
-                        <!--/.row-->
-                        <div class="chart-wrapper mt-4">
-                            <canvas id="trafficChart" style="height:200px;" height="200"></canvas>
-                        </div>
-
-                    </div>
-                    <div class="card-footer">
-                        <ul>
-                            <li>
-                                <div class="text-muted">Visits</div>
-                                <strong>29.703 Users (40%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Unique</div>
-                                <strong>24.093 Users (20%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="text-muted">Pageviews</div>
-                                <strong>78.706 Views (60%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">New Users</div>
-                                <strong>22.123 Users (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Bounce Rate</div>
-                                <strong>40.15%</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+              </div>
+              <div class="fourth-box-section2">
+                <div class="small-box">
+                  <i class="fa-regular fa-rectangle-list fa-2x mb-10"></i>
+                  <span>2500</span>
+                  <p>Total</p>
                 </div>
-            </div>
 
-            <div class="col-xl-3 col-lg-6">
-                <section class="card">
-                    <div class="twt-feed blue-bg">
-                        <div class="corner-ribon black-ribon">
-                            <i class="fa fa-twitter"></i>
-                        </div>
-                        <div class="fa fa-twitter wtt-mark"></div>
-
-                        <div class="media">
-                            <a href="#">
-                                <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="static/images/admin.jpg">
-                            </a>
-                            <div class="media-body">
-                                <h2 class="text-white display-6">Jim Doe</h2>
-                                <p class="text-light">Project Manager</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="weather-category twt-category">
-                        <ul>
-                            <li class="active">
-                                <h5>750</h5>
-                                Tweets
-                            </li>
-                            <li>
-                                <h5>865</h5>
-                                Following
-                            </li>
-                            <li>
-                                <h5>3645</h5>
-                                Followers
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="twt-write col-sm-12">
-                        <textarea placeholder="Write your Tweet and Enter" rows="1" class="form-control t-text-area"></textarea>
-                    </div>
-                    <footer class="twt-footer">
-                        <a href="#"><i class="fa fa-camera"></i></a>
-                        <a href="#"><i class="fa fa-map-marker"></i></a>
-                        New Castle, UK
-                        <span class="pull-right">
-                            32
-                        </span>
-                    </footer>
-                </section>
-            </div>
-
-
-            <div class="col-xl-3 col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="stat-widget-one">
-                            <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
-                            <div class="stat-content dib">
-                                <div class="stat-text">Total Profit</div>
-                                <div class="stat-digit">1,012</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="small-box">
+                  <i class="fa-solid fa-spinner fa-2x mb-10"></i>
+                  <span>500</span>
+                  <p>Pending</p>
                 </div>
-            </div>
 
-
-            <div class="col-xl-3 col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="stat-widget-one">
-                            <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
-                            <div class="stat-content dib">
-                                <div class="stat-text">New Customer</div>
-                                <div class="stat-digit">961</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="small-box">
+                  <i class="fa-regular fa-circle-check fa-2x mb-10"></i>
+                  <span>1900</span>
+                  <p>Closed</p>
                 </div>
-            </div>
 
-            <div class="col-xl-3 col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="stat-widget-one">
-                            <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
-                            <div class="stat-content dib">
-                                <div class="stat-text">Active Projects</div>
-                                <div class="stat-digit">770</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="small-box">
+                  <i class="fa-regular fa-rectangle-xmark fa-2x mb-10"></i>
+                  <span>100</span>
+                  <p>Deleted</p>
                 </div>
+              </div>
             </div>
 
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>World</h4>
-                    </div>
-                    <div class="Vector-map-js">
-                        <div id="vmap" class="vmap" style="height: 265px;"></div>
-                    </div>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Latest News</h2>
                 </div>
-                <!-- /# card -->
+              </div>
+              <div class="latest-news-section2">
+                <img th:src="@{/images/news-01.png}" alt="" />
+                <div class="latest-news-section2-info">
+                  <h4>Created SASS Section</h4>
+                  <p>New SASS Examples & Tutorials</p>
+                </div>
+                <span>3 Days Ago</span>
+              </div>
+
+              <div class="latest-news-section2">
+                <img th:src="@{/images/news-02.png}" alt="" />
+                <div class="latest-news-section2-info">
+                  <h4>Changed The Design</h4>
+                  <p>A Brand New Website Design</p>
+                </div>
+                <span>5 Days Ago</span>
+              </div>
+
+              <div class="latest-news-section2">
+                <img th:src="@{/images/news-03.png}" alt="" />
+                <div class="latest-news-section2-info">
+                  <h4>Team Increased</h4>
+                  <p>3 Developers Joined The Team</p>
+                </div>
+                <span>7 Days Ago</span>
+              </div>
+
+              <div class="latest-news-section2">
+                <img th:src="@{/images/news-04.png}" alt="" />
+                <div class="latest-news-section2-info">
+                  <h4>Added Payment Gateway</h4>
+                  <p>Many New Payment Gateways Added</p>
+                </div>
+                <span>9 Days Ago</span>
+              </div>
             </div>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Latest Tasks</h2>
+                </div>
+              </div>
+              <div class="latest-tasks-section2">
+                <div class="latest-tasks-section2-info">
+                  <h4>Record One New Video</h4>
+                  <p>Record Python Create Exe Project</p>
+                </div>
+                <i class="fa-regular fa-trash-can"></i>
+              </div>
 
+              <div class="latest-tasks-section2">
+                <div class="latest-tasks-section2-info">
+                  <h4>Write Article</h4>
+                  <p>Write Low Level vs High Level Languages</p>
+                </div>
+                <i class="fa-regular fa-trash-can"></i>
+              </div>
 
-        </div> <!-- .content -->
-    </div><!-- /#right-panel -->
+              <div class="latest-tasks-section2">
+                <div class="latest-tasks-section2-info">
+                  <h4>Finish Project</h4>
+                  <p>Publish Academy Programming Project</p>
+                </div>
+                <i class="fa-regular fa-trash-can"></i>
+              </div>
 
-    <!-- Right Panel -->
+              <div class="latest-tasks-section2">
+                <div class="latest-tasks-section2-info">
+                  <h4>Finish Lesson</h4>
+                  <p>Finish Teaching Flex Box</p>
+                </div>
+                <i class="fa-regular fa-trash-can"></i>
+              </div>
+            </div>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Top Search Items</h2>
+                </div>
+              </div>
+              <div class="top-search-items">
+                <div class="top-search-items-info">
+                  <p>Keyword</p>
+                  <p>Search Count</p>
+                </div>
 
-    <script th:src="@{/vendors/jquery/dist/jquery.min.js}"></script>
-    <script th:src="@{/vendors/popper.js/dist/umd/popper.min.js}"></script>
-    <script th:src="@{/vendors/bootstrap/dist/js/bootstrap.min.js}"></script>
+                <div class="top-search-items-info">
+                  <h4>Programming</h4>
+                  <span>220</span>
+                </div>
+                <div class="top-search-items-info">
+                  <h4>JavaScript</h4>
+                  <span>180</span>
+                </div>
+                <div class="top-search-items-info">
+                  <h4>PHP</h4>
+                  <span>160</span>
+                </div>
+                <div class="top-search-items-info">
+                  <h4>Code</h4>
+                  <span>145</span>
+                </div>
+                <div class="top-search-items-info">
+                  <h4>Design</h4>
+                  <span>110</span>
+                </div>
+                <div class="top-search-items-info">
+                  <h4>Logic</h4>
+                  <span>95</span>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Latest Uploads</h2>
+                </div>
+              </div>
+              <div class="latest-news-section2 latest-uploads">
+                <img
+                  th:src="@{/images/pdf.svg}"
+                  alt=""
+                  class="latest-uploads-image"
+                />
+                <div class="latest-news-section2-info latest-uploads-info">
+                  <h4>my-file.pdf</h4>
+                  <p>Zana</p>
+                </div>
+                <span>2.9MB</span>
+              </div>
 
-    <script th:src="@{/js/main.js}"></script>
-    <script th:src="@{/js/dashboard.js}"></script>
-    <script th:src="@{/js/widgets.js}"></script>
+              <div class="latest-news-section2 latest-uploads">
+                <img
+                  th:src="@{/images/avi.svg}"
+                  alt=""
+                  class="latest-uploads-image"
+                />
+                <div class="latest-news-section2-info latest-uploads-info">
+                  <h4>My-Video-File.avi</h4>
+                  <p>Admin</p>
+                </div>
+                <span>4.9MB</span>
+              </div>
 
-    <script th:src="@{/vendors/chart.js/dist/Chart.bundle.min.js}"></script>
-    <script th:src="@{/vendors/jqvmap/dist/jquery.vmap.min.js}"></script>
-    <script th:src="@{/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js}"></script>
-    <script th:src="@{/vendors/jqvmap/dist/maps/jquery.vmap.world.js}"></script>
-    <script>
-        (function($) {
-            "use strict";
+              <div class="latest-news-section2 latest-uploads">
+                <img
+                  th:src="@{/images/psd.svg}"
+                  alt=""
+                  class="latest-uploads-image"
+                />
+                <div class="latest-news-section2-info latest-uploads-info">
+                  <h4>My-Psd-File.psd</h4>
+                  <p>Ahmad</p>
+                </div>
+                <span>4.5MB</span>
+              </div>
 
-            jQuery('#vmap').vectorMap({
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: ['#1de9b6', '#03a9f5'],
-                normalizeFunction: 'polynomial'
-            });
-        })(jQuery);
-    </script>
+              <div class="latest-news-section2 latest-uploads">
+                <img
+                  th:src="@{/images/zip.svg}"
+                  alt=""
+                  class="latest-uploads-image"
+                />
+                <div class="latest-news-section2-info latest-uploads-info">
+                  <h4>My-Zip-File.zip</h4>
+                  <p>User</p>
+                </div>
+                <span>8.9MB</span>
+              </div>
 
-</body>
+              <div class="latest-news-section2 latest-uploads">
+                <img
+                  th:src="@{/images/dll.svg}"
+                  alt=""
+                  class="latest-uploads-image"
+                />
+                <div class="latest-news-section2-info latest-uploads-info">
+                  <h4>My-DLL-File.dll</h4>
+                  <p>Admin</p>
+                </div>
+                <span>4.9MB</span>
+              </div>
+
+              <div class="latest-news-section2 latest-uploads">
+                <img
+                  th:src="@{/images/eps.svg}"
+                  alt=""
+                  class="latest-uploads-image"
+                />
+                <div class="latest-news-section2-info latest-uploads-info">
+                  <h4>My-Eps-File.eps</h4>
+                  <p>Designer</p>
+                </div>
+                <span>8.9MB</span>
+              </div>
+            </div>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Last Project Progress</h2>
+                </div>
+              </div>
+              <div class="last-project-progress">
+                <div class="last-project-progress-info">
+                  <ul>
+                    <li><span></span> Got The Project</li>
+                    <li><span></span> Started The Project</li>
+                    <li><span></span> The Project About To Finish</li>
+                    <li><span></span> Test The Project</li>
+                    <li><span></span> Finish The Project & Get Money</li>
+                  </ul>
+                </div>
+                <img th:src="@{/images/project.png}" alt="" />
+              </div>
+            </div>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Reminders</h2>
+                </div>
+              </div>
+              <div class="reminders-section2">
+                <div class="reminders">
+                  <h4>Check My Tasks List</h4>
+                  <p>28/09/2022 - 12:00am</p>
+                </div>
+                <div class="reminders">
+                  <h4>Check My Projects</h4>
+                  <p>26/10/2022 - 12:00am</p>
+                </div>
+                <div class="reminders">
+                  <h4>Call All My Clients</h4>
+                  <p>05/11/2022 - 12:00am</p>
+                </div>
+                <div class="reminders">
+                  <h4>Finish The Development Workshop</h4>
+                  <p>20/12/2022 - 12:00am</p>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Latest Post</h2>
+                </div>
+              </div>
+              <div class="latest-post-section2">
+                <div class="latest-post-person-info">
+                  <img th:src="@{/images/avatar.png}" alt="" />
+                  <ul>
+                    <li><h4>Zana Suleiman</h4></li>
+                    <li><p>About 3 Hours Ago</p></li>
+                  </ul>
+                </div>
+                <div class="post">
+                  <p>
+                    You Can Fool All Of The People Some Of The Time, And Some Of
+                    The People All Of The Time, But You Can't Fool All Of The
+                    People All Of The Time.
+                  </p>
+                </div>
+                <div class="latest-post-likes-comments">
+                  <ul>
+                    <li>
+                      <i class="fa-regular fa-heart heart"></i><span>1.8K</span>
+                    </li>
+                    <li>
+                      <i class="fa-regular fa-comments"></i><span>500</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="box-section1">
+                <div class="box-title">
+                  <h2>Social Media Stats</h2>
+                </div>
+              </div>
+              <div class="social-media-stats">
+                <div class="media">
+                  <div class="media-icon twitter">
+                    <i class="fa-brands fa-twitter fa-2x"></i>
+                  </div>
+                  <ul>
+                    <li class="twitter">90K Followers</li>
+                    <li><a href="/#">Follow</a></li>
+                  </ul>
+                </div>
+
+                <div class="media">
+                  <div class="media-icon facebook">
+                    <i class="fa-brands fa-facebook-f fa-2x"></i>
+                  </div>
+                  <ul>
+                    <li class="facebook">2M Like</li>
+                    <li><a href="/#">Like</a></li>
+                  </ul>
+                </div>
+
+                <div class="media">
+                  <div class="media-icon youtube">
+                    <i class="fa-brands fa-youtube fa-2x"></i>
+                  </div>
+                  <ul>
+                    <li class="youtube">1M Subs</li>
+                    <li><a href="/#">Subscribe</a></li>
+                  </ul>
+                </div>
+
+                <div class="media">
+                  <div class="media-icon linkedin">
+                    <i class="fa-brands fa-linkedin fa-2x"></i>
+                  </div>
+                  <ul>
+                    <li class="linkedin">70K Followers</li>
+                    <li><a href="/#">Follow</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="projects-box">
+          <div class="box-section1">
+            <div class="box-title">
+              <h2>Projects</h2>
+            </div>
+          </div>
+          <div class="projects-box-section2">
+            <table>
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td>Finish Date</td>
+                  <td>Client</td>
+                  <td>Price</td>
+                  <td>Team</td>
+                  <td>Status</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ministry Wikipedia</td>
+                  <td>10 May 2022</td>
+                  <td>Ministry</td>
+                  <td>$5300</td>
+                  <td>
+                    <img th:src="@{/images/team-01.png}" alt="" />
+                    <img th:src="@{/images/team-02.png}" alt="" />
+                    <img th:src="@{/images/team-03.png}" alt="" />
+                    <img th:src="@{/images/team-04.png}" alt="" />
+                  </td>
+                  <td><a href="/#" class="pending">Pending</a></td>
+                </tr>
+                <tr>
+                  <td>Zana Shop</td>
+                  <td>12 Oct 2021</td>
+                  <td>Zana Company</td>
+                  <td>$1500</td>
+                  <td>
+                    <img th:src="@{/images/team-01.png}" alt="" />
+                    <img th:src="@{/images/team-02.png}" alt="" />
+                    <img th:src="@{/images/team-03.png}" alt="" />
+                  </td>
+                  <td><a href="/#" class="in-progress">In Progress</a></td>
+                </tr>
+                <tr>
+                  <td>Bouba App</td>
+                  <td>05 Sep 2021</td>
+                  <td>Bouba</td>
+                  <td>$800</td>
+                  <td>
+                    <img th:src="@{/images/team-01.png}" alt="" />
+                    <img th:src="@{/images/team-02.png}" alt="" />
+                  </td>
+                  <td><a href="/#" class="completed">Completed</a></td>
+                </tr>
+                <tr>
+                  <td>Mahmoud Website</td>
+                  <td>22 May 2021</td>
+                  <td>Mahmoud</td>
+                  <td>$600</td>
+                  <td>
+                    <img th:src="@{/images/team-01.png}" alt="" />
+                    <img th:src="@{/images/team-02.png}" alt="" />
+                  </td>
+                  <td><a href="/#" class="completed">Completed</a></td>
+                </tr>
+                <tr>
+                  <td>Sayed Website</td>
+                  <td>24 May 2021</td>
+                  <td>Sayed</td>
+                  <td>300</td>
+                  <td>
+                    <img th:src="@{/images/team-01.png}" alt="" />
+                    <img th:src="@{/images/team-02.png}" alt="" />
+                  </td>
+                  <td><a href="/#" class="rejected">Rejected</a></td>
+                </tr>
+                <tr>
+                  <td>Arena Application</td>
+                  <td>01 Mar 2021</td>
+                  <td>Arena Company</td>
+                  <td>$2600</td>
+                  <td>
+                    <img th:src="@{/images/team-01.png}" alt="" />
+                    <img th:src="@{/images/team-02.png}" alt="" />
+                    <img th:src="@{/images/team-03.png}" alt="" />
+                    <img th:src="@{/images/team-04.png}" alt="" />
+                  </td>
+                  <td><a href="/#" class="completed">Completed</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script th:src="@{/js/script.js}"></script>
+  </body>
 
 </html>
