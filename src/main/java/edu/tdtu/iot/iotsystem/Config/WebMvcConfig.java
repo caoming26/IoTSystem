@@ -22,20 +22,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new InterceptorConfig())
-                .excludePathPatterns("/image/**", "/vendor/**", "/css/**", "/script/**", "/api/**", "/api/register", "/favicon.ico", "/adminlte/**", "/media/static/**");
+                .excludePathPatterns("/images/**", "/vendor/**", "/css/**", "/script/**", "/api/**", "/api/register", "/favicon.ico", "/adminlte/**", "/media/static/**");
     }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/image/**").addResourceLocations("classpath:/static/image/")
+        registry.addResourceHandler("/images/**").addResourceLocations("classpath:/static/images/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/vendor/**").addResourceLocations("classpath:/static/vendor/")
-                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/script/**").addResourceLocations("classpath:/static/script/")
+        registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
         registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/adminlte/**").addResourceLocations("classpath:/static/adminlte/")
+        registry.addResourceHandler("/webfonts/**").addResourceLocations("classpath:/static/webfonts/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
     }
 }

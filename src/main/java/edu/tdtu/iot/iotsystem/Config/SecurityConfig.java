@@ -42,7 +42,6 @@ public class SecurityConfig{
                     registry.requestMatchers("/home", "/", "/api/auth/login", "/api/auth/register","/static/**").permitAll();
                     registry.requestMatchers("/admin/**").hasRole("ADMIN");
 //                    registry.requestMatchers("/user/**").hasRole("USER");
-//                    registry.anyRequest().permitAll();
 //                    registry.anyRequest().authenticated(); // Tat ca duong dan khac phai dang nhap
                     registry.anyRequest().permitAll(); // Tat ca cac duong dan khac khong can dang nhap
                 })
