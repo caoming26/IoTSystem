@@ -35,6 +35,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         // Lấy token từ cookie
         String token;
         Cookie cookie = WebUtils.getCookie(request, "JWT_TOKEN");
+
         if (cookie != null) {
             token = cookie.getValue();
         } else {

@@ -24,8 +24,10 @@ public class InterceptorConfig implements HandlerInterceptor {
                 modelAndView.addObject("email", principal.getEmail());
                 
                 modelAndView.addObject("isLogined", true);
+                System.out.println(principal.getUsername());
             } else {
                 modelAndView.addObject("isLogined", false);
+                System.out.println("Đây");
             }
         }else {
             System.out.println("ModelAndView is null!");

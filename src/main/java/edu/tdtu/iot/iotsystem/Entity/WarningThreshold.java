@@ -7,11 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Builder
-@Document("rfid")
-public class RFID {
-
+@Document("warning_threshold")
+public class WarningThreshold {
     @Id
     private String id;
-    private String rfid;
-    private String name;
+    private String type;
+    private double threshold;
 }
