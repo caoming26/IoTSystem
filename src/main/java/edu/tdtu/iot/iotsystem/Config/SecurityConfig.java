@@ -39,7 +39,7 @@ public class SecurityConfig{
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry->{
-                    registry.requestMatchers("/home", "/", "/api/auth/login", "/api/auth/register","/static/**").permitAll();
+                    registry.requestMatchers("/home", "/", "/api/auth/login", "/api/auth/register","/js/**", "/css/**", "/images/**","/resource/**").permitAll();
                     registry.requestMatchers("/admin/**").hasRole("ADMIN");
 //                    registry.requestMatchers("/user/**").hasRole("USER");
 //                    registry.anyRequest().authenticated(); // Tat ca duong dan khac phai dang nhap
