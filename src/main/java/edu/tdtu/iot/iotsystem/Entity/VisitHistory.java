@@ -3,10 +3,9 @@ package edu.tdtu.iot.iotsystem.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-<<<<<<< HEAD
-=======
+
 import lombok.NoArgsConstructor;
->>>>>>> 678e4d5aeef9ef0e192d04bbda51962549f0b0a6
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,10 +18,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @NoArgsConstructor
 public class VisitHistory {
-<<<<<<< HEAD
-=======
 
->>>>>>> 678e4d5aeef9ef0e192d04bbda51962549f0b0a6
     @Id
     private String id;
     private RFID rfid;
