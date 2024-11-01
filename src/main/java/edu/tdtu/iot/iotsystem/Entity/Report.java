@@ -10,7 +10,10 @@ import java.util.Date;
 @Data@Builder
 @Document("reports")
 public class Report {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8529483504b0c75c2dea8ff0790df24536e3c66e
     @Id
     private String id;
     private Date time;
