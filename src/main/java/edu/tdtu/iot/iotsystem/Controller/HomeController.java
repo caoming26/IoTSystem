@@ -5,9 +5,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-
     @GetMapping("/")
     public String home() {
-        return "index"; // Trả về tên file HTML (không cần phần đuôi .html)
+        return "index";
+    }
+
+    @GetMapping("/settings")
+    public String getSettingsPage() {
+        return "settings";
+    }
+
+    @GetMapping("/Profile")
+    public String getProfilePage() {
+        return "Profile";
     }
 }

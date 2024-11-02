@@ -16,66 +16,11 @@
   </head>
   <body>
     <div class="page-content">
-      <div class="sidebar">
-        <div class="brand">
-          <i class="fa-solid fa-xmark xmark"></i>
-          <h3>Zana</h3>
-        </div>
-        <ul>
-          <li>
-            <a href="../index.html" class="sidebar-link">
-              <i class="fa-regular fa-chart-bar fa-fw"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
 
-          <li>
-            <a href="./settings.html" class="sidebar-link">
-              <i class="fa-solid fa-gear fa-fw"></i>
-              <span>Settings</span>
-            </a>
-          </li>
+      <!-- Chèn sidebar từ file sidebar.html -->
+      <div th:replace="sidebar :: sidebar"></div>
+      <!-- End sidebar -->
 
-          <li>
-            <a href="./Profile.html" class="sidebar-link">
-              <i class="fa-regular fa-user fa-fw"></i><span>Profile</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="./Projects.html" class="sidebar-link">
-              <i class="fa-solid fa-diagram-project fa-fw"></i
-              ><span>Projects</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="./Courses.html" class="sidebar-link">
-              <i class="fa-solid fa-graduation-cap fa-fw"></i
-              ><span>Courses</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="./Friends.html" class="sidebar-link">
-              <i class="fa-regular fa-circle-user fa-fw"></i
-              ><span>Friends</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="./Files.html" class="sidebar-link">
-              <i class="fa-regular fa-file fa-fw"></i> <span>Files</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="./Plans.html" class="sidebar-link">
-              <i class="fa-regular fa-credit-card fa-fw"></i><span>Plans</span>
-            </a>
-          </li>
-        </ul>
-      </div>
       <main>
         <div class="header">
           <i class="fa-solid fa-bars bar-item"></i>

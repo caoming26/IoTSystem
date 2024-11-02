@@ -1,8 +1,8 @@
 let getBarItem = document.querySelector(".bar-item");
 let getSideBar = document.querySelector(".sidebar");
 let getXmark = document.querySelector(".xmark");
-let getPageContent = document.querySelector(".page-content");
-let getLoader = document.querySelector(".loader");
+// let getPageContent = document.querySelector(".page-content");
+// let getLoader = document.querySelector(".loader");
 let getToggle = document.querySelectorAll(".toggle");
 let getHeart = document.querySelector(".heart");
 let getSidebarLink = document.querySelectorAll(".sidebar-link");
@@ -31,18 +31,18 @@ window.addEventListener("resize", (e) => {
     }
   }
 });
-if (getLoader) {
-  window.addEventListener("load", () => {
-    getLoader.style.display = "none";
-    getPageContent.style.display = "grid";
-    activePage = "index.html";
-    getSidebarLink.forEach((item) => {
-      if (item.href.includes(`${activePage}`)) {
-        item.classList.add("active");
-      } else item.classList.remove("active");
-    });
-  });
-}
+// if (getLoader) {
+//   window.addEventListener("load", () => {
+//     getLoader.style.display = "none";
+//     getPageContent.style.display = "grid";
+//     activePage = "index.html";
+//     getSidebarLink.forEach((item) => {
+//       if (item.href.includes(`${activePage}`)) {
+//         item.classList.add("active");
+//       } else item.classList.remove("active");
+//     });
+//   });
+// }
 document.onclick = (e) => {
   if (getSideBar.classList.contains("sidebar-active")) {
     if (
