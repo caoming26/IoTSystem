@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .main-content {
+            margin-left: 250px;
+            padding: 2rem;
+        }
+
+        .table-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .dialog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Import sidebar styles */
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .logo {
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .logo h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .nav-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-item.active {
+            background: #3498db;
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-item span {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+<!-- Include Sidebar -->
+<div th:replace="~{sidebar :: sidebar}"></div>
+
+<!-- Main Content -->
+<div class="main-content">
+    <h1 class="text-3xl font-bold mb-6">Reports</h1>
+
+    <!-- Table Container -->
+    <div class="table-container">
+        <table class="min-w-full">
+            <thead>
+            <tr class="bg-gray-50 border-b">
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File Name</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Device</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap">1</td>
+                <td class="px-6 py-4 whitespace-nowrap">report1.txt</td>
+                <td class="px-6 py-4 whitespace-nowrap">2024-03-11 14:30</td>
+                <td class="px-6 py-4 whitespace-nowrap">Device A</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <button onclick="showEditDialog(1)" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2">Edit</button>
+                    <button onclick="deleteRecord(1)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap">2</td>
+                <td class="px-6 py-4 whitespace-nowrap">report2.txt</td>
+                <td class="px-6 py-4 whitespace-nowrap">2024-03-11 15:45</td>
+                <td class="px-6 py-4 whitespace-nowrap">Device B</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <button onclick="showEditDialog(2)" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2">Edit</button>
+                    <button onclick="deleteRecord(2)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Edit Dialog -->
+<div class="dialog-overlay" id="dialogOverlay"></div>
+<div class="edit-dialog" id="editDialog">
+    <h2 class="text-xl font-bold mb-4">Edit File</h2>
+    <textarea id="fileContent" class="w-full h-64 p-2 border rounded mb-4"></textarea>
+    <div class="flex justify-end space-x-2">
+        <button onclick="closeEditDialog()" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">Cancel</button>
+        <button onclick="saveChanges()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Save</button>
+    </div>
+</div>
+
+<script>
+    function showEditDialog(id) {
+        document.getElementById('dialogOverlay').style.display = 'block';
+        document.getElementById('editDialog').style.display = 'block';
+        // Here you would typically load the file content based on the ID
+        document.getElementById('fileContent').value = `Content of file ${id}`;
+    }
+
+    function closeEditDialog() {
+        document.getElementById('dialogOverlay').style.display = 'none';
+        document.getElementById('editDialog').style.display = 'none';
+    }
+
+    function saveChanges() {
+        // Here you would typically save the changes
+        const newContent = document.getElementById('fileContent').value;
+        console.log('Saving changes:', newContent);
+        closeEditDialog();
+    }
+
+    function deleteRecord(id) {
+        if (confirm('Are you sure you want to delete this record?')) {
+            console.log('Deleting record:', id);
+            // Here you would typically delete the record
+        }
+    }
+</script>
+</body>
+</html>

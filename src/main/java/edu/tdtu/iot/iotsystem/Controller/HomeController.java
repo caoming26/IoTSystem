@@ -15,9 +15,9 @@ public class HomeController {
         return "settings";
     }
 
-    @GetMapping("/Profile")
+    @GetMapping("/report")
     public String getProfilePage() {
-        return "Profile";
+        return "report";
     }
 
 }
