@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .sidebar {
             width: 250px;
@@ -8,6 +10,9 @@
             color: white;
             padding: 20px;
             min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
         }
 
         .logo {
@@ -55,7 +60,7 @@
     <div class="logo">
         <h2>Server SystemCare</h2>
     </div>
-    <div class="nav-item active" onclick="window.location.href='/'">
+    <div class="nav-item" onclick="window.location.href='/'">
         <i class="fa-regular fa-chart-bar fa-fw"></i>
         <span>Dashboard</span>
     </div>
@@ -68,31 +73,14 @@
         <span>Settings</span>
     </div>
 </div>
-
 <script>
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     // Lấy tất cả các nav-item
-    //     const navItems = document.querySelectorAll('.nav-item');
-    //
-    //     // Thêm sự kiện click cho mỗi nav-item
-    //     navItems.forEach(item => {
-    //         item.addEventListener('click', function() {
-    //             // Xóa class active từ tất cả nav-item
-    //             navItems.forEach(nav => nav.classList.remove('active'));
-    //
-    //             // Thêm class active cho nav-item được click
-    //             this.classList.add('active');
-    //
-    //             // Lấy tên trang từ data-page attribute
-    //             const page = this.getAttribute('data-page');
-    //
-    //             // Có thể thêm logic chuyển trang ở đây
-    //             console.log('Navigating to:', page);
-    //
-    //             // Nếu sử dụng Thymeleaf, bạn có thể chuyển hướng như sau:
-    //             // window.location.href = '/' + page;
-    //         });
-    //     });
-    // });
+    document.addEventListener("DOMContentLoaded", function() {
+        const navItems = document.querySelectorAll(".nav-item");
+        navItems.forEach(item => {
+            if (item.getAttribute("onclick").includes(window.location.pathname)) {
+                item.classList.add("active");
+            }
+        });
+    });
 </script>
 </html>
