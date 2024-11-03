@@ -55,40 +55,40 @@
     <div class="logo">
         <h2>Server SystemCare</h2>
     </div>
-    <div class="nav-item active" data-page="dashboard">
+    <div class="nav-item active" onclick="window.location.href='/'">
         <i class="fa-regular fa-chart-bar fa-fw"></i>
         <span>Dashboard</span>
     </div>
-    <div class="nav-item" data-page="settings">
+    <div class="nav-item" onclick="window.location.href='/settings'">
         <i class="fa-solid fa-gear fa-fw"></i>
         <span>Settings</span>
     </div>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Lấy tất cả các nav-item
-        const navItems = document.querySelectorAll('.nav-item');
-
-        // Thêm sự kiện click cho mỗi nav-item
-        navItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // Xóa class active từ tất cả nav-item
-                navItems.forEach(nav => nav.classList.remove('active'));
-
-                // Thêm class active cho nav-item được click
-                this.classList.add('active');
-
-                // Lấy tên trang từ data-page attribute
-                const page = this.getAttribute('data-page');
-
-                // Có thể thêm logic chuyển trang ở đây
-                console.log('Navigating to:', page);
-
-                // Nếu sử dụng Thymeleaf, bạn có thể chuyển hướng như sau:
-                window.location.href = '/' + 'settings';
-            });
-        });
-    });
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     // Lấy tất cả các nav-item
+    //     const navItems = document.querySelectorAll('.nav-item');
+    //
+    //     // Thêm sự kiện click cho mỗi nav-item
+    //     navItems.forEach(item => {
+    //         item.addEventListener('click', function() {
+    //             // Xóa class active từ tất cả nav-item
+    //             navItems.forEach(nav => nav.classList.remove('active'));
+    //
+    //             // Thêm class active cho nav-item được click
+    //             this.classList.add('active');
+    //
+    //             // Lấy tên trang từ data-page attribute
+    //             const page = this.getAttribute('data-page');
+    //
+    //             // Có thể thêm logic chuyển trang ở đây
+    //             console.log('Navigating to:', page);
+    //
+    //             // Nếu sử dụng Thymeleaf, bạn có thể chuyển hướng như sau:
+    //             // window.location.href = '/' + page;
+    //         });
+    //     });
+    // });
 </script>
 </html>
