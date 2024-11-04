@@ -16,9 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,25 +44,28 @@ public class AuthenticationController {
 //        response.put("available", isAvailable);
 //        return response;
 
+    @GetMapping("/login")
+    public String loginPage(Model model){
+//        model.addAttribute()
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String registerPage(Model model){
+        model.addAttribute("userDTO", new UserDTO()); // Thêm đối tượng UserDTO vào model
+        return "register"; // Trả về view "register"
+    }
 
     @PostMapping("/api/register")
-    public ResponseEntity<?> register(@RequestBody UserDTO request, HttpServletResponse response) {
+    public ResponseEntity<?> register(@ModelAttribute UserDTO request, HttpServletResponse response) {
+        System.out.println(request.getPassword());
         User user = authenticationService.register(request);
 
-        //Generate token
-        String token = jwtService.generateToken(user);
 
-
-        // Add token to cookie to login
-        Cookie cookie = new Cookie("JWT_TOKEN", token);
-        cookie.setMaxAge(MAX_AGE_COOKIE);
-        cookie.setPath("/");
-        response.addCookie(cookie);
-
-        return ResponseEntity.ok(modelMapper.map(user, UserDTO.class));
+        return ResponseEntity.ok("");
     }
     @PostMapping("/api/login")
-    public ResponseEntity<?> authenticate(@RequestBody LoginDTO request, HttpServletResponse response) {
+    public ResponseEntity<?> authenticate(@ModelAttribute LoginDTO request, HttpServletResponse response) {
         //Generate token
         AuthenticationDTO authenticationDTO = authenticationService.login(request);
         String token = authenticationDTO.getToken();
