@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
 <head>
     <!-- Add Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -66,21 +67,24 @@
     </div>
     <div class="nav-item" onclick="window.location.href='/report'">
         <i class="fa-regular fa-file-alt fa-fw"></i>
-        <span>Report</span>
+        <span>Reports</span>
     </div>
     <div class="nav-item" onclick="window.location.href='/settings'">
         <i class="fa-solid fa-gear fa-fw"></i>
         <span>Settings</span>
     </div>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const navItems = document.querySelectorAll(".nav-item");
-        navItems.forEach(item => {
-            if (item.getAttribute("onclick").includes(window.location.pathname)) {
-                item.classList.add("active");
-            }
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navItems = document.querySelectorAll(".nav-item");
+            navItems.forEach(item => {
+                const href = item.getAttribute("onclick").match(/window\.location\.href='([^']+)'/)[1];
+                if (window.location.pathname === href) {
+                    item.classList.add("active");
+                } else {
+                    item.classList.remove("active");
+                }
+            });
         });
-    });
-</script>
+    </script>
+</div>
 </html>
