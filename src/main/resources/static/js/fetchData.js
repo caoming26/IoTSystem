@@ -29,7 +29,7 @@ function createHistoricalChart(canvasId, label) {
             plugins: {
                 title: {
                     display: true, // Bật hiển thị tiêu đề
-                    text: 'Monthly Sales Data', // Nội dung tiêu đề
+                    text: label, // Nội dung tiêu đề
                     font: {
                         size: 10 // Kích thước font tiêu đề
                     },
