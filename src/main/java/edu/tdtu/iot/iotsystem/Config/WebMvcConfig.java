@@ -25,7 +25,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/images/**", "/webfonts/**", "/css/**", "/js/**", "/api/**", "/api/register", "/favicon.ico");
     }
 
-    
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/**").addResourceLocations("classpath:/static/images/")
