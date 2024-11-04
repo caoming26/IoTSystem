@@ -15,6 +15,7 @@ public class InterceptorConfig implements HandlerInterceptor {
     @Override
     public void postHandle(@NonNull HttpServletRequest request,@NonNull HttpServletResponse response,@NonNull Object handler, ModelAndView modelAndView) throws Exception {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(authentication);
         if (modelAndView != null){
             if (!authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ANONYMOUS"))) {
                 User principal = (User) authentication.getPrincipal();
@@ -25,6 +26,7 @@ public class InterceptorConfig implements HandlerInterceptor {
                 
                 modelAndView.addObject("isLogined", true);
                 System.out.println(principal.getUsername());
+                System.out.println("isLogined");
             } else {
                 modelAndView.addObject("isLogined", false);
                 System.out.println("Đây");

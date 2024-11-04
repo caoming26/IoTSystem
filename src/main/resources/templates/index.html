@@ -8,6 +8,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gauge.js/1.3.7/gauge.min.js"></script>
   <!-- Add Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" >
   <style>
     * {
       margin: 0;
@@ -209,6 +210,20 @@
       width: 150px;
       height: 75px;
     }
+    .temp-icon{
+      color: #008000; /* Xanh lá cây */
+      font-size: 48px;
+    }
+    .humid-icon{
+      color: #000080 ; /* Đỏ */
+      font-size: 48px;
+
+    }
+    .dust-icon{
+      color: #A9A9A9  ; /* Vàng */
+      font-size: 48px;
+
+    }
   </style>
 </head>
 <body>
@@ -246,16 +261,26 @@
     <!-- Gauge Charts -->
     <div class="gauge-charts">
       <div class="gauge-container">
+        <div class="icon">
+          <span class="material-symbols-sharp temp-icon"> device_thermostat </span>
+        </div>
         <h3>Temperature</h3>
         <canvas id="temperatureGauge" class="gauge"></canvas>
       </div>
       <div class="gauge-container">
+        <div class="icon">
+          <span class="material-symbols-sharp humid-icon">humidity_percentage</span>
+        </div>
         <h3>Humidity</h3>
         <canvas id="humidityGauge" class="gauge"></canvas>
       </div>
       <div class="gauge-container">
+        <div class="icon">
+          <span class="material-symbols-sharp dust-icon"> speed </span>
+        </div>
         <h3>Dust</h3>
-        <canvas id="pressureGauge" class="gauge"></canvas>
+        <canvas id="dustGauge" class="gauge"></canvas>
+
       </div>
     </div>
 
@@ -270,7 +295,7 @@
           <canvas id="humidityChart"></canvas>
         </div>
         <div class="chart-container">
-          <canvas id="pressureChart"></canvas>
+          <canvas id="dustChart"></canvas>
         </div>
         <div class="chart-container">
           <canvas id="altitudeChart"></canvas>
@@ -282,35 +307,36 @@
 
 <script th:inline="javascript">
   // Initialize historical charts
-  function createHistoricalChart(canvasId, label) {
-    const ctx = document.getElementById(canvasId).getContext('2d');
-    return new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: [],
-        datasets: [{
-          label: label,
-          data: [],
-          borderColor: '#3f51b5',
-          tension: 0.1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        },
-        plugins: {
-          legend: {
-            display: false
-          }
-        }
-      }
-    });
-  }
+  // function createHistoricalChart(canvasId, label) {
+  //   const ctx = document.getElementById(canvasId).getContext('2d');
+  //   return new Chart(ctx, {
+  //     type: 'line',
+  //     data: {
+  //       labels: [],
+  //       datasets: [{
+  //         label: label,
+  //         data: [],
+  //         borderColor: '#3f51b5',
+  //         tension: 0.1
+  //       }]
+  //     },
+  //     options: {
+  //       title:label,
+  //       responsive: true,
+  //       maintainAspectRatio: false,
+  //       scales: {
+  //         y: {
+  //           beginAtZero: true
+  //         }
+  //       },
+  //       plugins: {
+  //         legend: {
+  //           display: false
+  //         }
+  //       }
+  //     }
+  //   });
+  // }
 
   // Initialize gauge charts
   function createGauge(canvasId, options) {
@@ -323,74 +349,74 @@
     return gauge;
   }
 
-  // Create historical charts
-  const temperatureChart = createHistoricalChart('temperatureChart', 'Temperature');
-  const humidityChart = createHistoricalChart('humidityChart', 'Humidity');
-  const pressureChart = createHistoricalChart('pressureChart', 'Pressure');
-  const altitudeChart = createHistoricalChart('altitudeChart', 'Altitude');
+  // // Create historical charts
+  // const temperatureChart = createHistoricalChart('temperatureChart', 'Temperature');
+  // const humidityChart = createHistoricalChart('humidityChart', 'Humidity');
+  // const pressureChart = createHistoricalChart('pressureChart', 'Pressure');
+  // const altitudeChart = createHistoricalChart('altitudeChart', 'Altitude');
 
   // Create gauge charts
-  const temperatureGauge = createGauge('temperatureGauge', {
-    maxValue: 40,
-    minValue: -30,
-    angle: -0.2,
-    lineWidth: 0.2,
-    radiusScale: 0.9,
-    pointer: {
-      length: 0.6,
-      strokeWidth: 0.035
-    },
-    limitMax: false,
-    limitMin: false,
-    colorStart: '#6FADCF',
-    colorStop: '#8FC0DA',
-    strokeColor: '#E0E0E0',
-    generateGradient: true,
-    highDpiSupport: true
-  });
+  // const temperatureGauge1 = createGauge('temperatureGauge', {
+  //   maxValue: 40,
+  //   minValue: -30,
+  //   angle: -0.2,
+  //   lineWidth: 0.2,
+  //   radiusScale: 0.9,
+  //   pointer: {
+  //     length: 0.6,
+  //     strokeWidth: 0.035
+  //   },
+  //   limitMax: false,
+  //   limitMin: false,
+  //   colorStart: '#6FADCF',
+  //   colorStop: '#8FC0DA',
+  //   strokeColor: '#E0E0E0',
+  //   generateGradient: true,
+  //   highDpiSupport: true
+  // });
 
-  const humidityGauge = createGauge('humidityGauge', {
-    maxValue: 50,
-    minValue: -50,
-    angle: -0.2,
-    lineWidth: 0.2,
-    radiusScale: 0.9,
-    pointer: {
-      length: 0.6,
-      strokeWidth: 0.035
-    },
-    limitMax: false,
-    limitMin: false,
-    colorStart: '#6FADCF',
-    colorStop: '#8FC0DA',
-    strokeColor: '#E0E0E0',
-    generateGradient: true,
-    highDpiSupport: true
-  });
+  // const humidityGauge = createGauge('humidityGauge', {
+  //   maxValue: 50,
+  //   minValue: -50,
+  //   angle: -0.2,
+  //   lineWidth: 0.2,
+  //   radiusScale: 0.9,
+  //   pointer: {
+  //     length: 0.6,
+  //     strokeWidth: 0.035
+  //   },
+  //   limitMax: false,
+  //   limitMin: false,
+  //   colorStart: '#6FADCF',
+  //   colorStop: '#8FC0DA',
+  //   strokeColor: '#E0E0E0',
+  //   generateGradient: true,
+  //   highDpiSupport: true
+  // });
 
-  const pressureGauge = createGauge('pressureGauge', {
-    maxValue: 500,
-    minValue: -750,
-    angle: -0.2,
-    lineWidth: 0.2,
-    radiusScale: 0.9,
-    pointer: {
-      length: 0.6,
-      strokeWidth: 0.035
-    },
-    limitMax: false,
-    limitMin: false,
-    colorStart: '#6FADCF',
-    colorStop: '#8FC0DA',
-    strokeColor: '#E0E0E0',
-    generateGradient: true,
-    highDpiSupport: true
-  });
+  // const dustGauge = createGauge('dustGauge', {
+  //   maxValue: 500,
+  //   minValue: -750,
+  //   angle: -0.2,
+  //   lineWidth: 0.2,
+  //   radiusScale: 0.9,
+  //   pointer: {
+  //     length: 0.6,
+  //     strokeWidth: 0.035
+  //   },
+  //   limitMax: false,
+  //   limitMin: false,
+  //   colorStart: '#6FADCF',
+  //   colorStop: '#8FC0DA',
+  //   strokeColor: '#E0E0E0',
+  //   generateGradient: true,
+  //   highDpiSupport: true
+  // });
 
   // Set initial values
-  temperatureGauge.set(-30);
-  humidityGauge.set(-50);
-  pressureGauge.set(-750);
+  // temperatureGauge.set(-30);
+  // humidityGauge.set(-50);
+  // pressureGauge.set(-750);
 
   // Add some sample data points
   function addData(chart) {
@@ -406,13 +432,17 @@
     chart.update();
   }
 
-  // Update charts every 2 seconds with sample data
-  setInterval(() => {
-    addData(temperatureChart);
-    addData(humidityChart);
-    addData(pressureChart);
-    addData(altitudeChart);
-  }, 2000);
+  // // Update charts every 2 seconds with sample data
+  // setInterval(() => {
+  //   addData(temperatureChart);
+  //   addData(humidityChart);
+  //   addData(pressureChart);
+  //   addData(altitudeChart);
+  // }, 2000);
 </script>
+<!--<script src="../static/js/script.js"></script>-->
+<!--<script src="https://localhost:8080/static/js/fetchData.js"></script>-->
+<script th:src="@{/js/fetchData.js}"></script>
+
 </body>
 </html>
