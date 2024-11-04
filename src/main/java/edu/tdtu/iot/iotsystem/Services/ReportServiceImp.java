@@ -24,12 +24,12 @@ public class ReportServiceImp implements ReportService{
 
     @Override
     public List<Report> getReports(){
-        return reportRepository.findAll(Sort.by(Sort.Direction.ASC, "time"));
+        return reportRepository.findAll(Sort.by(Sort.Direction.DESC, "time"));
     }
 
     @Override
     public List<Report> getReportsByType(String type){
-        return reportRepository.findByType(type);
+        return reportRepository.findByType(type, Sort.by(Sort.Direction.DESC, "time"));
     }
 
     @Override
