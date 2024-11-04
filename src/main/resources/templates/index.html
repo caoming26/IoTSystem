@@ -168,6 +168,7 @@
     /* Charts section */
     .charts-section h2 {
       margin-bottom: 15px;
+      margin-top: 15px;
       color: #333;
       font-size: 1.2rem;
     }
@@ -199,11 +200,22 @@
       padding: 15px;
       border-radius: 8px;
       text-align: center;
+      display: flex;
+      justify-content: space-between;
     }
 
     .gauge-container h3 {
       font-size: 1rem;
       margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0px;
+    }
+
+    .gauge-container .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     canvas.gauge {
@@ -235,7 +247,7 @@
   <div class="main-content">
     <div class="header">
       <h1>DASHBOARD</h1>
-      <div class="connection-status">Connection Status: Closed</div>
+      <div class="connection-status">Connection Status: <span style="color: green; font-weight: bold">Connected</span></div>
     </div>
 
     <!-- Metrics Grid
