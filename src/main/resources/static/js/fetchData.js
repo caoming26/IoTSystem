@@ -26,7 +26,21 @@ function createHistoricalChart(canvasId, label) {
             }]
         },
         options: {
-            title:label,
+            plugins: {
+                title: {
+                    display: true, // Bật hiển thị tiêu đề
+                    text: 'Monthly Sales Data', // Nội dung tiêu đề
+                    font: {
+                        size: 10 // Kích thước font tiêu đề
+                    },
+                    color: '#333', // Màu chữ của tiêu đề
+                    padding: {
+                        top: 2,
+                        bottom: 5
+                    },
+                    align: 'center' // Căn lề tiêu đề (center, start, end)
+                }
+            },
             responsive: true,
             maintainAspectRatio: false,
             scales: {
@@ -34,11 +48,11 @@ function createHistoricalChart(canvasId, label) {
                     beginAtZero: true
                 }
             },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
+            // plugins: {
+            //     legend: {
+            //         display: false
+            //     }
+            // }
         }
     });
 }
