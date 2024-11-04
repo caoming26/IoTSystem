@@ -61,8 +61,7 @@ public class AuthenticationController {
         System.out.println(request.getPassword());
         User user = authenticationService.register(request);
 
-
-        return ResponseEntity.ok("");
+        return ResponseEntity.ok(modelMapper.map(user, UserDTO.class));
     }
     @PostMapping("/api/login")
     public ResponseEntity<?> authenticate(@ModelAttribute LoginDTO request, HttpServletResponse response) {

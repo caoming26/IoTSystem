@@ -255,7 +255,7 @@
 </div>
 
 <!-- JavaScript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+<script>
 
     document.addEventListener('DOMContentLoaded', function () {
         const registerForm = document.getElementById('registerForm');
@@ -340,6 +340,7 @@
         // Form submission
         registerForm.addEventListener('submit', function (event) {
             event.preventDefault(); // Ngăn chặn submit mặc định
+            console.log("Form submit event triggered");
             const formData = new FormData(registerForm);
 
             fetch(registerForm.action, {
@@ -350,10 +351,11 @@
                 }
             })
                 .then(response => {
-                    if (response.ok) {
-                        window.location.href = '/';
+                    console.log(response.status)
+                    if (response.status === 200 || response.status === 201) { // Kiểm tra mã phản hồi HTTP 200
+                        window.location.href = '/login'; // Chuyển trang nếu thành công
                     } else {
-                        errorMessage.classList.remove('d-none');
+                        errorMessage.classList.remove('d-none'); // Hiển thị thông báo lỗi nếu không thành công
                     }
                 })
                 .catch(error => {
