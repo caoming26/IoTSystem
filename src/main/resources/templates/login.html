@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
+    <title>Login</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <!-- Font Awesome -->
     <link rel="stylesheet" th:href="@{/webjars/font-awesome/6.4.0/css/all.min.css}"/>
@@ -207,21 +207,21 @@
 <body>
 <div class="login-container">
     <div class="login-header">
-        <h1>Đăng nhập</h1>
-        <p>Vui lòng đăng nhập để tiếp tục</p>
+        <h1>Log In</h1>
+        <p>Please login to continue</p>
     </div>
 
     <!-- Hiển thị thông báo lỗi -->
 
 
     <div id="error-message" class="alert alert-danger d-none">
-        Tên đăng nhập hoặc mật khẩu không chính xác
+        Invalid email or password
     </div>
 
     <!-- Hiển thị thông báo logout -->
 
     <div id="logout-message" class="alert alert-success d-none">
-        Bạn đã đăng xuất thành công
+        Sign out successfully
     </div>
 
     <!-- Form đăng nhập với CSRF token -->
@@ -235,37 +235,37 @@
             <input type="text"
                    id="username"
                    name="username"
-                   placeholder="Nhập email mà bạn đăng ký"
+                   placeholder="Type your registered email"
                    required>
         </div>
 
         <div class="input-group">
-            <label for="password">Mật khẩu</label>
+            <label for="password">Password</label>
             <input type="password"
                    id="password"
                    name="password"
-                   placeholder="Nhập mật khẩu"
+                   placeholder="Type your password"
                    required minlength="6"> <!-- Ví dụ về yêu cầu mật khẩu tối thiểu -->
         </div>
 
         <div class="forgot-password">
-            <a th:href="@{/forgot-password}">Quên mật khẩu?</a>
+            <a th:href="@{/forgot-password}">Forgot password?</a>
         </div>
 
         <button type="submit" class="btn btn-primary">
-            <i class="fas fa-sign-in-alt"></i> Đăng nhập
+            <i class="fas fa-sign-in-alt"></i> Login
         </button>
 
         <div class="divider">
-            <span>hoặc</span>
+            <span>or</span>
         </div>
 
         <a th:href="@{/rfid-login}" class="btn btn-secondary">
-            <i class="fas fa-id-card"></i> Đăng nhập bằng RFID
+            <i class="fas fa-id-card"></i> Login with RFID
         </a>
 
         <div class="register-link">
-            Chưa có tài khoản? <a th:href="@{/register}">Đăng ký ngay</a>
+            No account? <a th:href="@{/register}">Register now</a>
         </div>
     </form>
 </div>
