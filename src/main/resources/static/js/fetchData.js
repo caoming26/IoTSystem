@@ -4,13 +4,48 @@ const humidityChart = document.getElementById("humidityChart");
 const dustChart = document.getElementById("dustChart");
 let tempChart1, humidityChart1, dustChart1;
 
-
-
+// Giả sử ngưỡng threshold là giá trị cố định hoặc đã lưu vào một biến threshold (cần update lại phần này để lấy threshold từ settings.html)
+let threshold = {
+    temperature: 60, // Giả sử ngưỡng nhiệt độ là 30
+    humidity: 60,    // Ngưỡng độ ẩm là 60
+    dust: 300        // Ngưỡng bụi là 300
+};
 
 //api local
 const temperatureApi= "/api/report/temperature"; // URL của API
 const humidityApi = "/api/report/humidity";
 const dustApi = "/api/report/dust";
+
+function showAlert() {
+    document.getElementById('alertBox').style.display = 'flex';
+}
+
+function hideAlert() {
+    document.getElementById('alertBox').style.display = 'none';
+}
+
+// Biến trạng thái để kiểm tra ngưỡng
+let temperatureExceeded = false;
+let humidityExceeded = false;
+let dustExceeded = false;
+
+function checkThreshold(value, type) {
+    if (type === 'temperature') {
+        temperatureExceeded = value > threshold.temperature;
+    } else if (type === 'humidity') {
+        humidityExceeded = value > threshold.humidity;
+    } else if (type === 'dust') {
+        dustExceeded = value > threshold.dust;
+    }
+
+    // Hiển thị cảnh báo nếu bất kỳ yếu tố nào vượt ngưỡng
+    if (temperatureExceeded || humidityExceeded || dustExceeded) {
+        showAlert();
+    } else {
+        hideAlert();
+    }
+}
+
 
 function createHistoricalChart(canvasId, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
@@ -128,6 +163,8 @@ function updateTempChart(data) {
     let temperatures = data.temperature; // Lấy giá trị nhiệt độ
     // const dust = data.map(item => item.dust); // Lấy giá trị nhiệt độ
     // const humidity = data.map(item => item.humidity); // Lấy giá trị nhiệt độ
+    console.log("Nhiệt độ nhận từ API:", temperatures); // Kiểm tra giá trị
+    checkThreshold(temperatures, 'temperature');
 
     tempChart1.data.labels.push(timestamps); // Gán nhãn cho biểu đồ
     tempChart1.data.datasets[0].data.push(temperatures); // Gán dữ liệu cho biểu đồ
@@ -147,6 +184,7 @@ function updateHumidChart(data) {
     const humidity = data.humidity; // Lấy giá trị nhiệt độ
     // const dust = data.map(item => item.dust); // Lấy giá trị nhiệt độ
     // const humidity = data.map(item => item.humidity); // Lấy giá trị nhiệt độ
+    checkThreshold(humidity, 'humidity');
 
     humidityChart1.data.labels.push(timestamps); // Gán nhãn cho biểu đồ
     humidityChart1.data.datasets[0].data.push(humidity); // Gán dữ liệu cho biểu đồ
@@ -166,6 +204,7 @@ function updateDustChart(data) {
     let dust = data.dust; // Lấy giá trị nhiệt độ
     // const dust = data.map(item => item.dust); // Lấy giá trị nhiệt độ
     // const humidity = data.map(item => item.humidity); // Lấy giá trị nhiệt độ
+    checkThreshold(dust, 'dust');
 
     dustChart1.data.labels.push(timestamps); // Gán nhãn cho biểu đồ
     dustChart1.data.datasets[0].data.push(dust); // Gán dữ liệu cho biểu đồ
@@ -271,3 +310,4 @@ window.onload = async function () {
 //         console.error('There was a problem with the fetch operation:', error);
 //     }
 // }
+
