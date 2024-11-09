@@ -143,7 +143,7 @@
       <div class="setting-item">
         <span>Status:</span>
         <label style="position: relative; width: 60px; height: 30px; display: inline-block;" for="status">
-          <input id="status" type="checkbox" style="opacity: 0; width: 0; height: 0;" onclick="toggleSwitch(this)">
+          <input id="status" type="checkbox" checked style="opacity: 0; width: 0; height: 0;" onclick="toggleSwitch(this)">
           <span style="
             position: absolute;
             cursor: pointer;
@@ -205,18 +205,35 @@
 <script>
   // Save settings
   function saveSettings() {
-    const threshold = document.getElementById('threshold').value;
-    const toggleDevice = document.getElementById('toggleDevice').checked;
+    const threshold = parseFloat(document.getElementById('threshold').value);
     const accountName = document.getElementById('accountName').value;
     const password = document.getElementById('password').value;
     const phone = document.getElementById('phone').value;
     const rfid = document.getElementById('rfid').value;
+    const sensorName = document.getElementById('sensorName').value;
 
-    console.log('Saving settings:', {
-      threshold, toggleDevice, accountName, password, phone, rfid
-    });
 
-    alert('Settings have been saved!');
+    const data = {
+      type: sensorName,
+      threshold: threshold
+    };
+
+    fetch('/api/warning-threshold/update', {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    })
+            .then(response => {
+              if (response.ok) {
+                alert('Threshold updated successfully!');
+              } else {
+                alert('Failed to update threshold.');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('An error occurred while updating the threshold.');
+            });
   }
 
   // Toggle switch
@@ -232,6 +249,21 @@
       knob.style.left = "3px";
     }
   }
+
+  // Đảm bảo toggle switch luôn bật khi trang tải
+  document.addEventListener("DOMContentLoaded", function() {
+    const statusCheckbox = document.getElementById("status");
+    const slider = statusCheckbox.nextElementSibling;
+    const knob = slider.children[0];
+
+    if (statusCheckbox.checked) {
+      slider.style.backgroundColor = "#3498db";
+      knob.style.left = "33px";
+    } else {
+      slider.style.backgroundColor = "#ccc";
+      knob.style.left = "3px";
+    }
+  });
 </script>
 </body>
 </html>
