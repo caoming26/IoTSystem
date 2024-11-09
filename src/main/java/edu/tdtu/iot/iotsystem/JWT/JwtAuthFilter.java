@@ -53,6 +53,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails,null,userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
+            }else {
+                // Token is invalid or expired, delete the cookie
+                Cookie expiredCookie = new Cookie("JWT_TOKEN", null);
+                expiredCookie.setMaxAge(0); // This will delete the cookie
+                expiredCookie.setPath("/"); // Set the same path as the original cookie
+                response.addCookie(expiredCookie);
             }
         }
         filterChain.doFilter(request, response);

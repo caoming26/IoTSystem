@@ -7,8 +7,10 @@ import edu.tdtu.iot.iotsystem.DTO.LoginDTO;
 import edu.tdtu.iot.iotsystem.DTO.UserDTO;
 import edu.tdtu.iot.iotsystem.Entity.User;
 import edu.tdtu.iot.iotsystem.JWT.JwtService;
+import edu.tdtu.iot.iotsystem.Mapper.UserMapper;
 import edu.tdtu.iot.iotsystem.Services.AuthenticationService;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -19,6 +21,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,6 +82,44 @@ public class AuthenticationController {
 
 //        System.out.println("Tooi la: "+modelMapper.map(((CustomUserDetails) authentication.getPrincipal()).getUser(), UserDTO.class).getFullname());
         return ResponseEntity.ok(modelMapper.map(user, UserDTO.class));
+    }
+
+
+    @GetMapping("/api/check-login")
+    public ResponseEntity<?> checkLogin(HttpServletRequest request) {
+        System.out.println("checkLogin AuthController");
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        Enumeration<String> headerNames = request.getHeaderNames();
+
+        if (headerNames != null) {
+            int count = 0;
+            while (headerNames.hasMoreElements()) {
+                String headerName = headerNames.nextElement();
+                System.out.println(count+": "+headerName + ": " + request.getHeader(headerName));
+                count++;
+            }
+        } else {
+            System.out.println("No headers found in request.");
+        }
+
+        if (authenticationService.checkLogin(request)!=null) {
+            System.out.println("true");
+            Map<String, Object> responseMap = new HashMap<>();
+            // Thêm các cặp khóa-giá trị vào Map
+            responseMap.put("loggedIn", true);
+            responseMap.put("user", UserMapper.INSTANCE.userToUserDTO(authenticationService.getUserLoggedIn()));
+            System.out.println("user: " +authenticationService.getUserLoggedIn());
+            System.out.println("userdto: "+ UserMapper.INSTANCE.userToUserDTO(authenticationService.getUserLoggedIn()).getName());
+
+
+            // Is login
+            return ResponseEntity.ok(responseMap);
+        } else {
+            System.out.println("false");
+            // Isn't login
+            return ResponseEntity.ok(Collections.singletonMap("loggedIn", false));
+        }
     }
 }
 

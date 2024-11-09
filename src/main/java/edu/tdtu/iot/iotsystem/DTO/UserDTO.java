@@ -23,5 +23,4 @@ public class UserDTO {
     @JsonProperty("phone")
     private String phone;
 
-
 }
