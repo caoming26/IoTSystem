@@ -4,17 +4,20 @@ const humidityChart = document.getElementById("humidityChart");
 const dustChart = document.getElementById("dustChart");
 let tempChart1, humidityChart1, dustChart1;
 
+
+
+//api local
+const temperatureApi= "/api/report/temperature"; // URL của API
+const humidityApi = "/api/report/humidity";
+const dustApi = "/api/report/dust";
+const thresholdWarningApi = "/api/warning-threshold"
+
 // Giả sử ngưỡng threshold là giá trị cố định hoặc đã lưu vào một biến threshold (cần update lại phần này để lấy threshold từ settings.html)
 let threshold = {
     temperature: 60, // Giả sử ngưỡng nhiệt độ là 30
     humidity: 60,    // Ngưỡng độ ẩm là 60
     dust: 300        // Ngưỡng bụi là 300
 };
-
-//api local
-const temperatureApi= "/api/report/temperature"; // URL của API
-const humidityApi = "/api/report/humidity";
-const dustApi = "/api/report/dust";
 
 function showAlert() {
     document.getElementById('alertBox').style.display = 'flex';
@@ -46,6 +49,36 @@ function checkThreshold(value, type) {
     }
 }
 
+// Hàm lấy threshold từ API cho các yếu tố cần thiết
+async function fetchThresholds() {
+    try {
+        const response = await fetch(thresholdWarningApi); // Gọi API để lấy tất cả ngưỡng
+        console.log("Fetch status:", response.ok, "Status code:", response.status);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+
+        const data = await response.json();
+        console.log("Data received from /api/warning-threshold:", data);
+
+        // Duyệt qua các phần tử và cập nhật threshold dựa trên type
+        data.forEach(item => {
+            if (item.type === 'temperature') {
+                threshold.temperature = item.threshold;
+                console.log("Threshold temperature updated to:", threshold.temperature);
+            } else if (item.type === 'humidity') {
+                threshold.humidity = item.threshold;
+                console.log("Threshold humidity updated to:", threshold.humidity);
+            } else if (item.type === 'dust') {
+                threshold.dust = item.threshold;
+                console.log("Threshold dust updated to:", threshold.dust);
+            }
+        });
+    } catch (error) {
+        console.error('Error fetching thresholds:', error);
+    }
+}
 
 function createHistoricalChart(canvasId, label) {
     const ctx = document.getElementById(canvasId).getContext('2d');
@@ -155,6 +188,7 @@ const dustGauge1 = createGauge('dustGauge', {
     generateGradient: true,
     highDpiSupport: true
 });
+
 // Hàm cập nhật biểu đồ
 function updateTempChart(data) {
     // const timestamps = data.map(item => new Date(item.time).toLocaleTimeString()); // Chuyển đổi thời gian
@@ -163,7 +197,7 @@ function updateTempChart(data) {
     let temperatures = data.temperature; // Lấy giá trị nhiệt độ
     // const dust = data.map(item => item.dust); // Lấy giá trị nhiệt độ
     // const humidity = data.map(item => item.humidity); // Lấy giá trị nhiệt độ
-    console.log("Nhiệt độ nhận từ API:", temperatures); // Kiểm tra giá trị
+    // console.log("Nhiệt độ nhận từ API:", temperatures); // Kiểm tra giá trị
     checkThreshold(temperatures, 'temperature');
 
     tempChart1.data.labels.push(timestamps); // Gán nhãn cho biểu đồ
@@ -285,6 +319,7 @@ window.onload = async function () {
     humidityChart1 = createHistoricalChart('humidityChart', 'Humidity'); // Tạo biểu đồ
     dustChart1 = createHistoricalChart('dustChart', 'Dust'); // Tạo biểu đồ
 
+    await fetchThresholds(); // Lấy ngưỡng cho tất cả yếu tố trước khi khởi tạo biểu đồ
     await fetchData(); // Gọi hàm lấy dữ liệu và chờ kết quả
 
     setInterval(fetchData, 5000);

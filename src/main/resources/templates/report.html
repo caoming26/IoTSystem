@@ -30,6 +30,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            width: 50%;
         }
 
         .dialog-overlay {
@@ -105,41 +106,84 @@
 <div class="main-content">
     <h1 class="text-3xl font-bold mb-6">Reports</h1>
 
-    <!-- Table Container -->
-    <div class="table-container">
-        <table class="min-w-full">
-            <thead>
-            <tr class="bg-gray-50 border-b">
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File Name</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Device</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-            </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-            <tr>
-                <td class="px-6 py-4 whitespace-nowrap">1</td>
-                <td class="px-6 py-4 whitespace-nowrap">report1.txt</td>
-                <td class="px-6 py-4 whitespace-nowrap">2024-03-11 14:30</td>
-                <td class="px-6 py-4 whitespace-nowrap">Device A</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <button onclick="showEditDialog(1)" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2">Edit</button>
-                    <button onclick="deleteRecord(1)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td class="px-6 py-4 whitespace-nowrap">2</td>
-                <td class="px-6 py-4 whitespace-nowrap">report2.txt</td>
-                <td class="px-6 py-4 whitespace-nowrap">2024-03-11 15:45</td>
-                <td class="px-6 py-4 whitespace-nowrap">Device B</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <button onclick="showEditDialog(2)" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2">Edit</button>
-                    <button onclick="deleteRecord(2)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Delete</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <!-- System Report -->
+    <div class="system-report" style="margin-bottom: 2rem">
+        <h3 class="text-xl font-bold mb-4">System Reports</h3>
+        <div class="table-container">
+            <table class="min-w-full">
+                <thead>
+                <tr class="bg-gray-50 border-b">
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File Name</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+<!--                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>-->
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">1</td>
+                    <td class="px-6 py-4 whitespace-nowrap">system-report1.txt</td>
+                    <td class="px-6 py-4 whitespace-nowrap">2024-03-11 14:30</td>
+<!--                    <td class="px-6 py-4 whitespace-nowrap">Device A</td>-->
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <button onclick="showEditDialog(1)" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2">Edit</button>
+                        <button onclick="deleteRecord(1)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">2</td>
+                    <td class="px-6 py-4 whitespace-nowrap">system-report2.txt</td>
+                    <td class="px-6 py-4 whitespace-nowrap">2024-03-11 15:45</td>
+<!--                    <td class="px-6 py-4 whitespace-nowrap">Device B</td>-->
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <button onclick="showEditDialog(2)" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2">Edit</button>
+                        <button onclick="deleteRecord(2)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Login Report -->
+    <div class="system-report" style="margin-bottom: 2rem">
+        <h3 class="text-xl font-bold mb-4">Login Reports</h3>
+        <div class="table-container">
+            <table class="min-w-full">
+                <thead>
+                <tr class="bg-gray-50 border-b">
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File Name</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">1</td>
+                    <td class="px-6 py-4 whitespace-nowrap">login-report1.txt</td>
+                    <td class="px-6 py-4 whitespace-nowrap">2024-03-11 14:30</td>
+                    <td class="px-6 py-4 whitespace-nowrap">Nguyen Cao Minh</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <button onclick="showEditDialog(1)" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2">Edit</button>
+                        <button onclick="deleteRecord(1)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">2</td>
+                    <td class="px-6 py-4 whitespace-nowrap">login-report2.txt</td>
+                    <td class="px-6 py-4 whitespace-nowrap">2024-03-11 15:45</td>
+                    <td class="px-6 py-4 whitespace-nowrap">Nguyen Tien Thang</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <button onclick="showEditDialog(2)" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded mr-2">Edit</button>
+                        <button onclick="deleteRecord(2)" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
