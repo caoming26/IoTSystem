@@ -9,6 +9,7 @@
   <!-- Add Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" >
+  <link rel="icon" th:href="@{/static/favicon.ico}" type="image/x-icon">
   <style>
     * {
       margin: 0;
@@ -236,6 +237,24 @@
       font-size: 48px;
 
     }
+
+    /* Alert Box */
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    #alertBox {
+      display: none; /* Ban đầu ẩn */
+      padding: 15px;
+      background-color: #ffdddd;
+      color: brown;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      animation: blink 1s infinite; /* Hiệu ứng chớp tắt */
+    }
   </style>
 </head>
 <body>
@@ -245,6 +264,12 @@
 
   <!-- Main Content -->
   <div class="main-content">
+
+    <!-- Alert Box -->
+    <div id="alertBox">
+      <strong>Warning!</strong>&nbsp;Threshold exceeded.
+    </div>
+
     <div class="header">
       <h1>DASHBOARD</h1>
       <div class="connection-status">Connection Status: <span style="color: green; font-weight: bold">Connected</span></div>
@@ -451,6 +476,8 @@
   //   addData(pressureChart);
   //   addData(altitudeChart);
   // }, 2000);
+
+
 </script>
 <!--<script src="../static/js/script.js"></script>-->
 <!--<script src="https://localhost:8080/static/js/fetchData.js"></script>-->
