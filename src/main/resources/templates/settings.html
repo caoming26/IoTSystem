@@ -179,19 +179,19 @@
       <h3>Account Management</h3>
       <div class="setting-item">
         <label for="accountName">Account name:</label>
-        <input type="text" id="accountName" placeholder="Type new name">
+        <input type="text" id="accountName" placeholder="Type new name" disabled="true">
       </div>
       <div class="setting-item">
         <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="Type new password">
+        <input type="password" id="password" placeholder="Type new password" disabled="true">
       </div>
       <div class="setting-item">
         <label for="phone">Phone number:</label>
-        <input type="tel" id="phone" placeholder="Type new phone number">
+        <input type="tel" id="phone" placeholder="Type new phone number" disabled="true">
       </div>
       <div class="setting-item">
         <label for="rfid">RFID card number:</label>
-        <input type="text" id="rfid" placeholder="Type new RFID card number">
+        <input type="text" id="rfid" placeholder="Type new RFID card number" disabled="true">
       </div>
     </div>
 
@@ -232,6 +232,36 @@
       knob.style.left = "3px";
     }
   }
+  async function fetchUser(){
+    const userApi = "/api/check-login";
+    const accountName = document.getElementById('accountName');
+    const password = document.getElementById('password');
+    const phone = document.getElementById('phone');
+    const rfid = document.getElementById('rfid');
+
+    try{
+      const userResponse = await fetch(userApi);
+      if(!userResponse.ok){
+        throw new Error('Network response was not ok for User: ' + userResponse.statusText);
+      }
+      const userData = await  userResponse.json();
+      console.log(userData.user)
+      accountName.value = userData.user.name;
+      password.value = userData.user.name;
+      phone.value = userData.user.phone;
+      rfid.value = userData.user.email;
+    }catch (error) {
+      console.error('There was a problem with the fetch User operation:', error);
+    }
+
+
+  }
+  window.onload = async function () {
+
+    await fetchUser(); // Gọi hàm lấy dữ liệu và chờ kết quả
+
+    // setInterval(fetchData, 5000);
+  };
 </script>
 </body>
 </html>
