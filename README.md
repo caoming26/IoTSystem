@@ -1,5 +1,23 @@
 # IoTSystem
 
+## Các sơ đồ
+
+### Usecase:
+- <img src="https://github.com/user-attachments/assets/1ee8cc9c-97be-49ef-95d9-f10dfd13ee77" alt="Usecase Diagram" width="500px" />
+
+### Data Flow Diagram:
+- **DFD Context:**
+  <img src="https://github.com/user-attachments/assets/a87f19ab-0a72-4172-8767-975fdbae36e3" alt="DFD Context" width="500px" />
+- **DFD Level 0:**
+  <img src="https://github.com/user-attachments/assets/e0cc4c61-9b22-4319-9206-04b398820c41" alt="DFD Level 0" width="500px" />
+
+### Entity Relationship Diagram:
+- <img src="https://github.com/user-attachments/assets/ac60cf72-ad2c-4fba-a8d4-233ae3078822" alt="Entity Relationship Diagram" width="500px" />
+
+### Physical Database Design:
+- <img src="https://github.com/user-attachments/assets/30fd51b5-7104-435c-a4c0-40e259980a9c" alt="Physical Database Design" width="500px" />
+
+
 ## Phần cứng
 
 ### Sơ đồ mạch
