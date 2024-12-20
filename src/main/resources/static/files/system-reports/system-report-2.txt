@@ -1,0 +1,15 @@
+{"_id":{"$oid":"672dbbf4471bee3c4e28f671"},"time":{"$date":{"$numberLong":"1731050484379"}},"type":"temperature","temperature":{"$numberDouble":"29.8"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbbf5471bee3c4e28f672"},"time":{"$date":{"$numberLong":"1731050485845"}},"type":"humidity","humidity":{"$numberDouble":"65.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbbf7471bee3c4e28f673"},"time":{"$date":{"$numberLong":"1731050487361"}},"type":"dust","dust":{"$numberDouble":"1463.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbbff471bee3c4e28f674"},"time":{"$date":{"$numberLong":"1731050495663"}},"type":"temperature","temperature":{"$numberDouble":"29.3"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc01471bee3c4e28f675"},"time":{"$date":{"$numberLong":"1731050497250"}},"type":"humidity","humidity":{"$numberDouble":"63.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc05471bee3c4e28f676"},"time":{"$date":{"$numberLong":"1731050501885"}},"type":"dust","dust":{"$numberDouble":"1412.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc2e471bee3c4e28f677"},"time":{"$date":{"$numberLong":"1731050542147"}},"type":"dust","dust":{"$numberDouble":"1431.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc36471bee3c4e28f678"},"time":{"$date":{"$numberLong":"1731050550022"}},"type":"humidity","humidity":{"$numberDouble":"63.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc42471bee3c4e28f679"},"time":{"$date":{"$numberLong":"1731050562282"}},"type":"dust","dust":{"$numberDouble":"1396.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc4a471bee3c4e28f67a"},"time":{"$date":{"$numberLong":"1731050570799"}},"type":"humidity","humidity":{"$numberDouble":"62.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc58471bee3c4e28f67b"},"time":{"$date":{"$numberLong":"1731050584535"}},"type":"dust","dust":{"$numberDouble":"1446.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc5a471bee3c4e28f67c"},"time":{"$date":{"$numberLong":"1731050586901"}},"type":"temperature","temperature":{"$numberDouble":"28.9"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc5c471bee3c4e28f67d"},"time":{"$date":{"$numberLong":"1731050588297"}},"type":"humidity","humidity":{"$numberDouble":"62.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc62471bee3c4e28f67e"},"time":{"$date":{"$numberLong":"1731050594036"}},"type":"dust","dust":{"$numberDouble":"1435.0"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
+{"_id":{"$oid":"672dbc64471bee3c4e28f67f"},"time":{"$date":{"$numberLong":"1731050596653"}},"type":"temperature","temperature":{"$numberDouble":"28.9"},"_class":"edu.tdtu.iot.iotsystem.Entity.Report"}
