@@ -27,12 +27,13 @@
 | 14  | Xốp Formex 2m²         | 2          |
 | 15  | Dao cắt / Dao rọc giấy | 1          |
 
-## Phần mềm
-• Web
-– Front-end: Html, css
-– Back-end: Java Spring Boot
-![image](https://github.com/user-attachments/assets/9c412839-fdb0-4835-b1ed-1b700a74e049)
-• Lập trình phần cứng: Arduino IDE, ...
+## Phần mềm:
+- Web:
+  - Front-end: HTML, CSS
+  - Back-end: Java Spring Boot
+  <img src="https://github.com/user-attachments/assets/9c412839-fdb0-4835-b1ed-1b700a74e049" alt="Phần mềm Web" width="500px" />
+- Lập trình phần cứng: Arduino IDE, ...
+
 
 ## Kịch bản.
 • Tổng quan hệ thống:
@@ -50,13 +51,16 @@ nhau.
 – Web service cập nhật dữ liệu vào database.
 
 ## Demo ứng dụng.
+
 ### Phần cứng:
-![image](https://github.com/user-attachments/assets/be2311c4-3bc2-4c20-9b23-c0cc4e88fd6e)
-![image](https://github.com/user-attachments/assets/7c9d310c-e29d-47b8-9941-69b9dd3c7bd0)
-![image](https://github.com/user-attachments/assets/de604d79-d6c0-4344-9681-186f6639a155)
-![image](https://github.com/user-attachments/assets/c6a9174c-e2a1-47ef-b3f5-5ba02169080d)
-![image](https://github.com/user-attachments/assets/c65a4faf-e7d5-428c-9cae-06bccfd0e40b)
+- <img src="https://github.com/user-attachments/assets/be2311c4-3bc2-4c20-9b23-c0cc4e88fd6e" alt="Phần cứng 1" width="500px" />
+- <img src="https://github.com/user-attachments/assets/7c9d310c-e29d-47b8-9941-69b9dd3c7bd0" alt="Phần cứng 2" width="500px" />
+- <img src="https://github.com/user-attachments/assets/de604d79-d6c0-4344-9681-186f6639a155" alt="Phần cứng 3" width="500px" />
+- <img src="https://github.com/user-attachments/assets/c6a9174c-e2a1-47ef-b3f5-5ba02169080d" alt="Phần cứng 4" width="500px" />
+- <img src="https://github.com/user-attachments/assets/c65a4faf-e7d5-428c-9cae-06bccfd0e40b" alt="Phần cứng 5" width="500px" />
+
 ### Phần mềm:
-![image](https://github.com/user-attachments/assets/29d63987-17e8-4211-ba73-c08c1c2026b9)
+- <img src="https://github.com/user-attachments/assets/29d63987-17e8-4211-ba73-c08c1c2026b9" alt="Phần mềm" width="500px" />
+
 
 
