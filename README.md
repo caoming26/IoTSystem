@@ -3,8 +3,10 @@
 ## Phần cứng
 
 ### Sơ đồ mạch
-![image](https://github.com/user-attachments/assets/69e48834-7f22-40e3-a9eb-df7772536646)  
-![image](https://github.com/user-attachments/assets/d509a8b9-f6c0-4c4c-907a-a7a35904c9f5)  
+
+- <img src="https://github.com/user-attachments/assets/69e48834-7f22-40e3-a9eb-df7772536646" alt="Sơ đồ mạch 1" width="600px" />
+- <img src="https://github.com/user-attachments/assets/d509a8b9-f6c0-4c4c-907a-a7a35904c9f5" alt="Sơ đồ mạch 2" width="600px" />
+
 
 ### Danh sách các thiết bị
 | STT | Tên thiết bị           | Số lượng   |
